@@ -1,0 +1,409 @@
+{% extends 'admin_unnies/base.html' %} {% load static %} {% block content %}
+
+<body onload="getDashBoard()">
+    <div class="admin-body">
+        <div class="admin-side-bar">
+            <div class="avatar">
+                <div class="avatar-border">
+                    <i class="fa fa-user icon icon-avatar"></i>
+                </div>
+                <div class="username">@{{ request.user }}</div>
+            </div>
+            <div class="dash">
+                <div class="dashboard dash-active">
+                    Dashboard
+                </div>
+                <div class="dash-products">
+                    Products
+                </div>
+                <div class="dash-users">
+                    Users
+                </div>
+                <div class="dash-admin">Admins</div>
+                <div class="dash-out">
+                    Logout
+                </div>
+            </div>
+        </div>
+        <div class="admin-main">
+            <div class="dash-main">
+                <div class="material-board">
+                    <div class="material-box n-order">
+                        <span>New Orders</span>
+                        <span class="m-value">3</span>
+                    </div>
+                    <div class="material-box s-order">
+                        <span>Shipped Orders</span>
+                        <span class="m-value">4</span>
+                    </div>
+                    <div class="material-box n-user">
+                        <span>New Users</span>
+                        <span class="m-value">5</span>
+                    </div>
+                </div>
+                <div class="material-board-main">
+                    <div class="n-order-main">
+                        <div class="n-order-item" data-price="1200" data-qty="2" data-productName="BTS - Dynamite Album" data-image="./images/product-image/albums/bts/bts1.jpg" data-customerName="Dave Charm B. Bulaquena" data-customerAddress="Tambac, Malasiqui, Pangasinan" data-contact="09343424355">
+                            <div class="n-order-show">
+                                <img src="./images/product-image/albums/bts/bts1.jpg" alt="">
+                                <div class="n-order-name">BTS Dynamite-Album</div>
+                                <div class="n-order-price">Price : ₱1200</div>
+                                <div class="n-order-qty">qty : 2</div>
+                                <div class="n-order-t-price">Total-Price : ₱2400</div>
+                                <div class="n-order-id">OrderID: 1223</div>
+                                <div class="n-order-pending">Pending</div>
+                            </div>
+                            <div class="n-order-info">
+                                <div class="n-cusName">Name : Dave Charm B. Bulaquena </div>
+                                <div class="n-cusAdd">Address : Tambac Malasiqui Pangasinan </div>
+                                <div class="n-cusAdd">Contact Info : 09343424355</div>
+                                <div class="p-type">Payment: CC</div>
+                                <div class="confirm">Confirm</div>
+                            </div>
+                        </div>
+                        <div class="n-order-item" data-price="1190" data-qty="1" data-productName="BTS - map of the Soul" data-image="./images/product-image/albums/bts/bts2.jpg" data-customerName="John M. Doe" data-customerAddress="Talospatang, Malasiqui, Pangasinan" data-contact="09661443368">
+                            <div class="n-order-show">
+                                <img src="./images/product-image/albums/bts/bts2.jpg" alt="">
+                                <div class="n-order-name">BTS Map of the Soul</div>
+                                <div class="n-order-price">Price : ₱1190</div>
+                                <div class="n-order-qty">qty : 1</div>
+                                <div class="n-order-t-price">Total-Price : ₱1190</div>
+                                <div class="n-order-id">OrderID: 1224</div>
+                                <div class="n-order-pending">Pending</div>
+                            </div>
+                            <div class="n-order-info">
+                                <div class="n-cusName">Name : John M. Doe </div>
+                                <div class="n-cusAdd">Address : Talospatang, Malasiqui, Pangasinan </div>
+                                <div class="n-cusAdd">Contact Info : 09661443368</div>
+                                <div class="p-type">Payment: CC</div>
+                                <div class="confirm">Confirm</div>
+                            </div>
+                        </div>
+                        <div class="n-order-item" data-price="1100" data-qty="1" data-productName="BTS - Wings Album" data-image="./images/product-image/albums/bts/bts3.jpg" data-customerName="Martha Kristin Ancheta" data-customerAddress="Bugtong, Malasiqui, Pangasinan" data-contact="09267138677">
+                            <div class="n-order-show">
+                                <img src="./images/product-image/albums/bts/bts3.jpg" alt="">
+                                <div class="n-order-name">BTS Wings Album</div>
+                                <div class="n-order-price">Price : ₱1100</div>
+                                <div class="n-order-qty">qty : 1</div>
+                                <div class="n-order-t-price">Total-Price : ₱1100</div>
+                                <div class="n-order-id">OrderID: 1225</div>
+                                <div class="n-order-pending">Pending</div>
+                            </div>
+                            <div class="n-order-info">
+                                <div class="n-cusName">Name :Martha Kristin Ancheta </div>
+                                <div class="n-cusAdd">Address : Bugtong, Malasiqui, Pangasinan </div>
+                                <div class="n-cusAdd">Contact Info : 09267138677</div>
+                                <div class="p-type">Payment: COD</div>
+                                <div class="confirm">Confirm</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="s-order-main">
+                        <div class="s-order-head">
+                            <div class="sort">
+                                Sort By :
+                                <select class="select-date">
+                                    <option value="Daily">Day</option>
+                                    <option value="Weekly">Week</option>
+                                    <option value="Monthly">Month</option>
+                                </select>
+                            </div>
+                            <div class="s">
+                                <input type="text" name="asa" placeholder="Search Order ID">
+                                <div class="sear">
+                                    Search
+                                </div>
+                            </div>
+                            <div class="day-sale"><span>Daily </span> Sale: 4</div>
+                            <div class="day-profit"><span>Daily</span> Profit: ₱5360</div>
+                        </div>
+                        <div class="s-order-body">
+                            <div class="s-order-item">
+                                <div class="s-order-show">
+                                    <img src="./images/product-image/albums/twice/twice1.jpg" alt="">
+                                    <div class="n-order-name">Twice - Eyes Wide Open</div>
+                                    <div class="n-order-price">Price : ₱1190</div>
+                                    <div class="n-order-qty">qty : 1</div>
+                                    <div class="n-order-t-price">Total-Price : ₱1190</div>
+                                    <div class="n-order-id">OrderID: 1225</div>
+                                </div>
+                                <div class="s-order-info">
+                                    <div class="n-cusName">Name : Dave Charm B. Bulaquena </div>
+                                    <div class="n-cusAdd">Address : Tambac Malasiqui Pangasinan </div>
+                                    <div class="n-cusAdd">Contact Info : 09343424355</div>
+                                    <div class="p-type">Payment: CC</div>
+                                    <div class="s-date">ShipDate: 01/05/21</div>
+                                </div>
+                            </div>
+                            <div class="s-order-item">
+                                <div class="s-order-show">
+                                    <img src="./images/product-image/albums/bp/bp1.jpg" alt="">
+                                    <div class="n-order-name">Black Pink The Album</div>
+                                    <div class="n-order-price">Price : ₱2190</div>
+                                    <div class="n-order-qty">qty : 1</div>
+                                    <div class="n-order-t-price">Total-Price : ₱2190</div>
+                                    <div class="n-order-id">OrderID: 1224</div>
+                                </div>
+                                <div class="s-order-info">
+                                    <div class="n-cusName">Name : Ericka Faldas</div>
+                                    <div class="n-cusAdd">Address : Garden Groove Salitran III, Dasmarinas, Cavite </div>
+                                    <div class="n-cusAdd">Contact Info : 09343424355</div>
+                                    <div class="p-type">Payment: CC</div>
+                                    <div class="s-date">ShipDate: 01/05/21</div>
+
+                                </div>
+                            </div>
+                            <div class="s-order-item">
+                                <div class="s-order-show">
+                                    <img src="./images/product-image/merchandise/bp3.jpg" alt="">
+                                    <div class="n-order-name">Black Pink : Hoodie</div>
+                                    <div class="n-order-price">Price : ₱790</div>
+                                    <div class="n-order-qty">qty : 1</div>
+                                    <div class="n-order-t-price">Total-Price :₱790</div>
+                                    <div class="n-order-id">OrderID: 1223</div>
+                                </div>
+                                <div class="s-order-info">
+                                    <div class="n-cusName">Name : Dave Charm B. Bulaquena </div>
+                                    <div class="n-cusAdd">Address : Tambac Malasiqui Pangasinan </div>
+                                    <div class="n-cusAdd">Contact Info : 09343424355</div>
+                                    <div class="p-type">Payment: CC</div>
+                                    <div class="s-date">ShipDate: 01/05/21</div>
+
+                                </div>
+                            </div>
+                            <div class="s-order-item">
+                                <div class="s-order-show">
+                                    <img src="./images/product-image/albums/bts/bts2.jpg" alt="">
+                                    <div class="n-order-name">BTS Map of the Soul</div>
+                                    <div class="n-order-price">Price : ₱1190</div>
+                                    <div class="n-order-qty">qty : 1</div>
+                                    <div class="n-order-t-price">Total-Price : ₱1190</div>
+                                    <div class="n-order-id">OrderID: 1222</div>
+                                </div>
+                                <div class="s-order-info">
+                                    <div class="n-cusName">Name : Dave Charm B. Bulaquena </div>
+                                    <div class="n-cusAdd">Address : Tambac Malasiqui Pangasinan </div>
+                                    <div class="n-cusAdd">Contact Info : 09343424355</div>
+                                    <div class="p-type">Payment: CC</div>
+                                    <div class="s-date">ShipDate: 01/05/21</div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="n-user-main">
+                        <div class="n-user-item">
+                            <div class="n-user-show">
+                                <div class="user-n">Username: davecharm16</div>
+                                <div class="user-un">Name: Dave Charm Barboco Bulaquena</div>
+                                <div class="user-e">Email: davecharm16@gmail.com</div>
+                                <div class="user-c">Contact: 09267138677</div>
+                            </div>
+                        </div>
+                        <div class="n-user-item">
+                            <div class="n-user-show">
+                                <div class="user-n">Username: cm_jask</div>
+                                <div class="user-un">Name: Cyrus Machir Tinga</div>
+                                <div class="user-e">Email: cybatak@gmail.com</div>
+                                <div class="user-c">Contact: 09234234532</div>
+                            </div>
+                        </div>
+                        <div class="n-user-item">
+                            <div class="n-user-show">
+                                <div class="user-n">Username: Mnistrik</div>
+                                <div class="user-un">Name: Martha Kristin Ancheta</div>
+                                <div class="user-e">Email: martha21@gmail.com</div>
+                                <div class="user-c">Contact: 09131234244</div>
+                            </div>
+                        </div>
+                        <div class="n-user-item">
+                            <div class="n-user-show">
+                                <div class="user-n">Username: Donna123</div>
+                                <div class="user-un">Name: Donna Bhel Facun</div>
+                                <div class="user-e">Email: donnabel@gmail.com</div>
+                                <div class="user-c">Contact: 09212312334</div>
+                            </div>
+                        </div>
+                        <div class="n-user-item">
+                            <div class="n-user-show">
+                                <div class="user-n">Username: janiceG</div>
+                                <div class="user-un">Name: Janice B. Garcia</div>
+                                <div class="user-e">Email: janice@yahoo.com</div>
+                                <div class="user-c">Contact: 09213242414</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="products-main">
+                <div class="products-admin-head">
+                    <div class="v-prod prod-active">Products</div>
+                    <div class="add-prod">Add Product</div>
+                </div>
+                <div class="product-admin-main">
+                    <div class="sort">Sort by:
+                        <select class="select-type">
+                            <option value="">Name</option>
+                            <option value="">Price</option>
+                            <option value="">Type</option>
+                            <option value="">Stocks</option>
+                        </select>
+                    </div>
+                    {% for product in products %}
+                    <div class="prod-admin-item">
+                        <div class="prod-item">
+                            {% for image in product.imagemodelproduct_set.all %}
+                            <img src="{{ image.image.url }}">
+                             {% endfor %}
+                            <div class="ad-name">Name:{{ product.title }}</div>
+                            <div class="ad-price">Price:₱{{ product.price }}</div>
+                            <div class="ad-type">Type:{{ product.product_type }}</div>
+                            <div class="edit">Edit</div>
+                        </div>
+                        <div class="prod-more-info">
+                            <div class="ad-stock">Stocks:{{ product.stocks }}</div>
+                            <div class="vari">Variation:</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <form class="add-products-main add-main" method = 'POST' action = "{% url 'addProduct' %}">
+                    {% csrf_token %}
+                    {{ error_products }}
+                   <div class="en-name">Name: <input type="text" name="title" placeholder="Name of the Product"></div>
+                   <div class="en-desce">Description: <input type="text" name="description" placeholder="Simple Description of the of the Product"></div>
+                    <div class="en-type">Price: <input type="number" name="price" placeholder="Price of the Product"></div>
+                    <div class="en-stock">Stocks: <input type="number" name="stocks" placeholder="Number of Stocks"></div>
+                    <div class="en-type">Type: <input type="text" name = "product_type" placeholder="Type of the product"></div>
+                    <div class="en-type">Is active: <input type="checkbox" name = "is_active" checked></div>
+                    <br>
+                    {% comment %} <div class="en-variation">Variatons: <input type="text" placeholder="[variations]"></div> {% endcomment %}
+                    {% comment %} <div class="en-image">Image: <input type="file" accept="/image"></div> {% endcomment %}
+                    {{ imageform.management_form }}
+                    {% for form in imageform %}
+                        {{ form }}
+                    {% endfor %}
+                    <button class="en-submit" type="submit">
+                        Add Product
+                    </button> 
+                </form>
+            </div>
+            <div class="users-admin">
+                <div class="users-head">
+                    <div class="m-box-1">Users</div>
+                    <div class="m-box-t">Total User <span>5</span></div>
+                </div>
+                <div class="users-body">
+                    <div class="user-item">
+                        <div class="user-show">
+                            <div class="user-n">Username: davecharm16</div>
+                            <div class="user-un">Name: Dave Charm Barboco Bulaquena</div>
+                            <div class="user-delete">Delete</div>
+                        </div>
+                        <div class="user-hide">
+                            <div class="user-e">Email: davecharm16@gmail.com</div>
+                            <div class="user-c">Contact: 09267138677</div>
+                            <div class="user-ad">#452 Talospatang Malasiqui, Pangasinan</div>
+                        </div>
+                    </div>
+                    <div class="user-item">
+                        <div class="user-show">
+                            <div class="user-n">Username: cm_jask</div>
+                            <div class="user-un">Name: Cyrus Machir Tinga</div>
+                            <div class="user-delete">Delete</div>
+                        </div>
+                        <div class="user-hide">
+                            <div class="user-e">Email: cyrus@gmail.com</div>
+                            <div class="user-c">Contact: 09261232342</div>
+                            <div class="user-ad">Caranglaan, Dagupan, City</div>
+                        </div>
+                    </div>
+                    <div class="user-item">
+                        <div class="user-show">
+                            <div class="user-n">Username: Mnistrik</div>
+                            <div class="user-un">Name: Martha Kristin Ancheta</div>
+                            <div class="user-delete">Delete</div>
+                        </div>
+                        <div class="user-hide">
+                            <div class="user-e">Email: martha@gmail.com</div>
+                            <div class="user-c">Contact: 092674442435</div>
+                            <div class="user-ad">Bugtong , Malasiqui, Pangasinan</div>
+                        </div>
+                    </div>
+                    <div class="user-item">
+                        <div class="user-show">
+                            <div class="user-n">Username: donna123</div>
+                            <div class="user-un">Name: Donna Bel Facunda</div>
+                            <div class="user-delete">Delete</div>
+                        </div>
+                        <div class="user-hide">
+                            <div class="user-e">Email: donnabel@gmail.com</div>
+                            <div class="user-c">Contact: 092653467634</div>
+                            <div class="user-ad">Tambac, Malasiqui, Pangasinan</div>
+                        </div>
+                    </div>
+                    <div class="user-item">
+                        <div class="user-show">
+                            <div class="user-n">Username: janniceG123</div>
+                            <div class="user-un">Name: janice Garcia</div>
+                            <div class="user-delete">Delete</div>
+                        </div>
+                        <div class="user-hide">
+                            <div class="user-e">Email: janG@yahoo.com</div>
+                            <div class="user-c">Contact: 09265455564</div>
+                            <div class="user-ad">Salitran III, dasmarinas, Cavite</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="admins-admin">
+                <div class="admins-head">
+                    <div class="a-box-1">Admins</div>
+                    <div class="a-box-t">Total Admins <span>{{ admins|length }}</span></div>
+                </div>
+                <div class="admins-body">
+                    <form class="admins-add" method="POST" action=" {% url 'registeradmin' %} ">
+                        {% csrf_token %}
+                        <div class="u">Username: <input type="text" name="username" placeholder="username"></div>
+                        <div class="u">Password1: <input type="password" name="password1" placeholder="password1"></div>
+                        <div class="u">Password2: <input type="password" name="password2" placeholder="password2"></div>
+                        <div class="u">Email <input type="email" name="email" placeholder="email"></div>
+                        <button type="submit" class="add-admin">Create</button>
+                    </form>
+                    {% for field in registration_form %}
+                    <p>
+                        {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    </p>
+                    {% endfor %} {% if registration_form.non_field_errors %}
+                    <div style="color: red">
+                        <p>{{registration_form.non_field_errors}}</p>
+                    </div>
+                    {% endif %} {% for user in admins %}
+                    <div class="admins-item">
+                        <div class="admins-show">
+                            <div class="user-x">Email: <input type="email" value="{{ user.email }}" class="a-inpt "></div>
+                            <div class="user-x">Username:<input type="text" value="{{ user.username }}" class="a-inpt"></div>
+                            <div class="edit-admin ">Edit</div>
+                            <div class="user-delete ">Delete</div>
+                        </div>
+                    </div>
+                    {% endfor %} {% comment %}
+                    <div class="admins-item">
+                        <div class="admins-show">
+                            <div class="user-x">Username: <input type="text " value="Mnistrik " class="a-inpt "></div>
+                            <div class="user-x">Password:<input type="password" value="binggor163" class="a-inpt"></div>
+                            <div class="user-x">Name: martha kristin Ancheta</div>
+                            <div class="edit-admin ">Edit</div>
+                            <div class="user-delete ">Delete</div>
+                        </div>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'resources/jquery-3.5.1.min.js' %} "></script>
+    <script src="{% static 'js/index.js ' %}"></script>
+</body>
+{% endblock content %}
