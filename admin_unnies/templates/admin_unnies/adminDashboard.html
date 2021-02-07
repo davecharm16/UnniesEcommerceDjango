@@ -250,7 +250,7 @@
                         </select>
                     </div>
                     {% for product in products %}
-                    <div class="prod-admin-item">
+                    <div class="prod-admin-item" data-orderID = "{{ product.id }}">
                         <div class="prod-item">
                             {% for image in product.imagemodelproduct_set.all %}
                             <img src="{{ image.image.url }}">
@@ -267,25 +267,23 @@
                     </div>
                     {% endfor %}
                 </div>
-                <form class="add-products-main add-main" method = 'POST' action = "{% url 'addProduct' %}">
+                <form id="form-addProduct" class="add-products-main add-main" method = 'POST' action = "{% url 'addProduct' %}" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ error_products }}
                    <div class="en-name">Name: <input type="text" name="title" placeholder="Name of the Product"></div>
                    <div class="en-desce">Description: <input type="text" name="description" placeholder="Simple Description of the of the Product"></div>
                     <div class="en-type">Price: <input type="number" name="price" placeholder="Price of the Product"></div>
                     <div class="en-stock">Stocks: <input type="number" name="stocks" placeholder="Number of Stocks"></div>
                     <div class="en-type">Type: <input type="text" name = "product_type" placeholder="Type of the product"></div>
                     <div class="en-type">Is active: <input type="checkbox" name = "is_active" checked></div>
-                    <br>
+                    <br> 
                     {% comment %} <div class="en-variation">Variatons: <input type="text" placeholder="[variations]"></div> {% endcomment %}
                     {% comment %} <div class="en-image">Image: <input type="file" accept="/image"></div> {% endcomment %}
-                    {{ imageform.management_form }}
-                    {% for form in imageform %}
-                        {{ form }}
-                    {% endfor %}
+                    {{ formset.management_form }}
+                    {{ formset.as_p }}
                     <button class="en-submit" type="submit">
                         Add Product
                     </button> 
+                    <div class = "en-submit-test">Add-Test</div>
                 </form>
             </div>
             <div class="users-admin">
@@ -405,5 +403,6 @@
     </div>
     <script src="{% static 'resources/jquery-3.5.1.min.js' %} "></script>
     <script src="{% static 'js/index.js ' %}"></script>
+    <script src="{% static 'js/admin.js ' %}"></script>
 </body>
 {% endblock content %}

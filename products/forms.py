@@ -15,7 +15,6 @@ class ProductForm(forms.ModelForm):
                     )
 
 class ImageForm(forms.ModelForm):
-    
     class Meta:
         model = ImageModelProduct
         fields = ("image",)

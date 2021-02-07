@@ -1409,7 +1409,7 @@ function addProduct() {
 
 $('.en-submit').click(function() {
     alert('1 Product Added ');
-    window.location.reload();
+    // window.location.reload();
 });
 
 

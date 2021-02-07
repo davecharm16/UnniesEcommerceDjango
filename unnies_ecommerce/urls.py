@@ -23,7 +23,7 @@ urlpatterns = [
     #auth
     path('adminUnnies/', views.adminUnniesLogin, name = 'adminUnniesLogin'),
     #own admins
-    path('adminMain/', views.adminView, name = 'adminView'),
+    path('adminUnniesMain/', views.adminView, name = 'adminView'),
     path('addProduct/', views.addProduct, name = 'addProduct'),
     path('adminMain/registerAdmin', views.registerAdmin, name='registeradmin' )
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
