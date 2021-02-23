@@ -27,7 +27,26 @@ $('.en-submit-test').click(function(e) {
         data: fd,
         dataType: "json",
         success: function(response) {
-            alert('1 product created');
+            if (response.error) {
+                alert(response.error);
+            } else if (response.product_error) {
+                error = JSON.parse(response.product_error)
+                addingError(error);
+            } else {
+                $('.error').text("");
+                alert(response.product + "added to products");
+                form.trigger("reset");
+                $('#product-main').load(location.href + "viewProduct");
+            }
         }
     });
 })
+
+function addingError(error) {
+    $('.error').text("");
+    Object.keys(error).forEach(element => {
+        error_message = error[element][0].message;
+        // error_field = $('.er-`${element}`').text("`${error['element']}`")
+        $(`.er-${element}`).text(error_message);
+    });
+}

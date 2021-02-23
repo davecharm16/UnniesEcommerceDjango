@@ -2073,7 +2073,7 @@
     .add-main {
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        /* justify-content: space-evenly; */
         align-items: baseline;
         padding: 2rem;
         font-size: 1.3rem;
@@ -2099,7 +2099,9 @@
     }
     
     .en-submit,
+    .en-submit-test,
     .add-admin {
+        margin-top: 10px;
         background-color: #CF9500;
         color: white;
         transition: all 0.3s ease;
@@ -2108,6 +2110,7 @@
     }
     
     .en-submit:hover,
+    .en-submit-test:hover,
     .add-admin:hover {
         background-color: #976c00;
     }
@@ -2232,4 +2235,10 @@
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
+    }
+    
+    .error {
+        text-align: center;
+        padding: 1rem 0;
+        color: red;
     }

@@ -25,5 +25,9 @@ urlpatterns = [
     #own admins
     path('adminUnniesMain/', views.adminView, name = 'adminView'),
     path('addProduct/', views.addProduct, name = 'addProduct'),
-    path('adminMain/registerAdmin', views.registerAdmin, name='registeradmin' )
+    path('adminUnniesMain/viewProduct/', views.viewProduct, name = 'viewProduct'),
+    path('adminUnniesMain/registerAdmin/', views.registerAdmin, name='registeradmin' ),
+    path('adminUnniesMain/editProduct/<int:id>', views.editProduct, name='editProduct' ),
+    path('adminUnniesMain/deleteProduct/<int:id>', views.deleteProduct, name='deleteProduct' ),
+
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

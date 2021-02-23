@@ -1,16 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from .forms import RegistrationForm
 from account.models import Account
 from products.models import Product, ImageModelProduct
 from products.forms import ProductForm, ImageForm
-from django.forms import modelformset_factory
+from django.forms import modelformset_factory, inlineformset_factory
 from django.contrib import messages
+from django.http import JsonResponse
 # Create your views here.
 
 def adminView(request):
     admins = Account.objects.filter(is_admin = True, is_superuser = False)
-    product = Product.objects.all()
+    product = Product.objects.all().order_by('title')
     images = ImageModelProduct.objects.all()
     ImageFormset = modelformset_factory(ImageModelProduct,form = ImageForm, extra = 4)
     formset = ImageFormset(queryset=ImageModelProduct.objects.none())
@@ -24,6 +25,16 @@ def adminView(request):
         }
     return render(request, 'admin_unnies/adminDashboard.html', context);
 
+def viewProduct(request):
+    product = Product.objects.all().order_by('title')
+    images = ImageModelProduct.objects.all()
+    context = {
+        'products': product,
+        'images': images,
+    }
+    return render(request, 'admin_unnies/getProduct.html', context);
+
+    
 
 def addProduct(request):
     ImageFormset = modelformset_factory(ImageModelProduct,form = ImageForm, extra = 4)
@@ -31,6 +42,12 @@ def addProduct(request):
     if request.method =='POST':
         formset = ImageFormset(request.POST or None, request.FILES,queryset=ImageModelProduct.objects.none())
         if formset.is_valid() and prod_form.is_valid():
+            imageNull_count = 0
+            for form in formset.cleaned_data:
+                if form == {}:
+                    imageNull_count += 1
+            if imageNull_count == 4:
+                return JsonResponse({'error': "need to upload at least 1 photo"}, status = 200)
             product = prod_form.save()
             print(formset.cleaned_data)
             for form in formset.cleaned_data:
@@ -39,14 +56,38 @@ def addProduct(request):
                     image = form['image']
                     photo = ImageModelProduct(product = product, image = image)
                     photo.save()
+            return JsonResponse({'product': product.title}, status = 200)
         else:
-            print(formset.errors)
-            print(prod_form.errors)
+            return JsonResponse({'product_error': prod_form.errors.as_json()}, status = 200)
         return redirect('adminView')
     return render(request, 'admin_unnies/adminDashboard.html', { });
 
+def editProduct(request, id):
+    product = get_object_or_404(Product, pk=id)
+    product_form = ProductForm(instance = product)
+    # images = ImageModelProduct.objects.all()
+    ImageFormset = inlineformset_factory(Product, ImageModelProduct, fields=('image',),)
+    if request.method == 'POST':
+        product = ProductForm(request.POST, instance = product)
+        prod = Product.objects.get(pk = id)
+        formset = ImageFormset(request.POST, request.FILES, instance = prod)
+        if product.is_valid() and formset.is_valid():
+            product.save()
+            formset.save()
+            return redirect('adminView')
+        else:
+            errors = product.errors
+            print(errors)
+            return render(request,'admin_unnies/editproduct.html', {'product_form': product_form, 'formset': formset, 'product':product,})
+    else:
+        formset = ImageFormset(instance = product)
+        return render(request,'admin_unnies/editproduct.html', {'product_form': product_form, 'formset': formset, 'product':product,})
 
-
+def deleteProduct(request, id):
+    if request.method == 'POST':
+        product = get_object_or_404(Product, pk=id)
+        product.delete()
+    return redirect('adminView')
 
 def adminUnniesLogin(request):
     if request.method == 'GET':

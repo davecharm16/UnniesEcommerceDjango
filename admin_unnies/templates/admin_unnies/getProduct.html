@@ -1,0 +1,27 @@
+<div class="sort">Sort by:
+    <select class="select-type">
+            <option value="">Name</option>
+            <option value="">Price</option>
+            <option value="">Type</option>
+            <option value="">Stocks</option>
+        </select>
+</div>
+{% for product in products %}
+<div class="prod-admin-item" data-orderID="{{ product.id }}">
+    <div class="prod-item">
+        {% for image in product.imagemodelproduct_set.all %}
+            {% if forloop.first %}
+            <img src="{{ image.image.url }}"> 
+            {% endif %}
+        {% endfor %}
+        <div class="ad-name">Name:{{ product.title }}</div>
+        <div class="ad-price">Price:₱{{ product.price }}</div>
+        <div class="ad-type">Type:{{ product.product_type }}</div>
+        <a href="{% url 'editProduct' product.id %}"><div class="edit">Edit</div></a>
+    </div>
+    <div class="prod-more-info">
+        <div class="ad-stock">Stocks:{{ product.stocks }}</div>
+        <div class="vari">Variation:</div>
+    </div>
+</div>
+{% endfor %}

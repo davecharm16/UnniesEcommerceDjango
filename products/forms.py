@@ -12,6 +12,7 @@ class ProductForm(forms.ModelForm):
                     'price',
                     'stocks',
                     'is_active',
+                    'is_featured',
                     )
 
 class ImageForm(forms.ModelForm):

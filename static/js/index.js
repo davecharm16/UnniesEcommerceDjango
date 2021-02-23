@@ -1386,15 +1386,15 @@ function getAllProduct() {
             }
         }
     );
-    $('.edit').click(function() {
-        if (!$('.prod-admin-item input').hasClass('editable')) {
-            $('.prod-admin-item input').addClass('editable').css('pointer-events', 'all');
-            $(this).text('save');
-        } else {
-            $('.prod-admin-item input').removeClass('editable').css('pointer-events', 'none');
-            $(this).text('edit');
-        }
-    });
+    // $('.edit').click(function() {
+    //     if (!$('.prod-admin-item input').hasClass('editable')) {
+    //         $('.prod-admin-item input').addClass('editable').css('pointer-events', 'all');
+    //         $(this).text('save');
+    //     } else {
+    //         $('.prod-admin-item input').removeClass('editable').css('pointer-events', 'none');
+    //         $(this).text('edit');
+    //     }
+    // });
 
     $('.remove-ad-item').click(function() {
         $(this).parent().parent().hide();

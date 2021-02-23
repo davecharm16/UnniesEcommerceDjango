@@ -240,7 +240,7 @@
                     <div class="v-prod prod-active">Products</div>
                     <div class="add-prod">Add Product</div>
                 </div>
-                <div class="product-admin-main">
+                <div class="product-admin-main" id="product-main">
                     <div class="sort">Sort by:
                         <select class="select-type">
                             <option value="">Name</option>
@@ -250,15 +250,16 @@
                         </select>
                     </div>
                     {% for product in products %}
-                    <div class="prod-admin-item" data-orderID = "{{ product.id }}">
+                    <div class="prod-admin-item" data-orderID="{{ product.id }}">
                         <div class="prod-item">
-                            {% for image in product.imagemodelproduct_set.all %}
-                            <img src="{{ image.image.url }}">
-                             {% endfor %}
+                            {% for image in product.imagemodelproduct_set.all|dictsort:"id" %} {% if forloop.first %}
+                            <img src="{{ image.image.url }}"> {% endif %} {% endfor %}
                             <div class="ad-name">Name:{{ product.title }}</div>
                             <div class="ad-price">Price:₱{{ product.price }}</div>
                             <div class="ad-type">Type:{{ product.product_type }}</div>
-                            <div class="edit">Edit</div>
+                            <a href="{% url 'editProduct' product.id %}">
+                                <div class="edit">Edit</div>
+                            </a>
                         </div>
                         <div class="prod-more-info">
                             <div class="ad-stock">Stocks:{{ product.stocks }}</div>
@@ -267,23 +268,40 @@
                     </div>
                     {% endfor %}
                 </div>
-                <form id="form-addProduct" class="add-products-main add-main" method = 'POST' action = "{% url 'addProduct' %}" enctype="multipart/form-data">
+                <form id="form-addProduct" class="add-products-main add-main" method='POST' action="{% url 'addProduct' %}" enctype="multipart/form-data">
                     {% csrf_token %}
-                   <div class="en-name">Name: <input type="text" name="title" placeholder="Name of the Product"></div>
-                   <div class="en-desce">Description: <input type="text" name="description" placeholder="Simple Description of the of the Product"></div>
+                    <div class="en-name">Name: <input type="text" name="title" placeholder="Name of the Product"></div>
+                    <div class="error er-title"></div>
+                    <div class="en-desce">Description: <input type="text" name="description" placeholder="Simple Description of the of the Product"></div>
+                    <div class="error er-description"></div>
                     <div class="en-type">Price: <input type="number" name="price" placeholder="Price of the Product"></div>
+                    <div class="error er-price"></div>
                     <div class="en-stock">Stocks: <input type="number" name="stocks" placeholder="Number of Stocks"></div>
-                    <div class="en-type">Type: <input type="text" name = "product_type" placeholder="Type of the product"></div>
-                    <div class="en-type">Is active: <input type="checkbox" name = "is_active" checked></div>
-                    <br> 
-                    {% comment %} <div class="en-variation">Variatons: <input type="text" placeholder="[variations]"></div> {% endcomment %}
-                    {% comment %} <div class="en-image">Image: <input type="file" accept="/image"></div> {% endcomment %}
-                    {{ formset.management_form }}
-                    {{ formset.as_p }}
-                    <button class="en-submit" type="submit">
+                    <div class="error er-stocks"></div>
+                    <!-- <div class="en-type">Type: <input type="text" name = "product_type" placeholder="Type of the product"></div>-->
+                    <div class="en-type">
+                        Product Type:
+                        <select name="product_type" id="id_product_type" class="form-control">
+                            <option value="Album">Album</option>
+                          
+                            <option value="Merchandise" selected = "selected">Merchandise</option>
+                          
+                            <option value="Photobook">Photobook</option>
+                          
+                            <option value="Fan lights">Fan lights</option>
+                          
+                            <option value="Accessories">Accessories</option>
+                          
+                        </select>
+                    </div>
+                    <div class="error er-product_type"></div>
+                    <div class="en-type">Is active: <input type="checkbox" name="is_active" checked></div>
+                    <br> {% comment %}
+                    <div class="en-variation">Variatons: <input type="text" placeholder="[variations]"></div> {% endcomment %} {% comment %}
+                    <div class="en-image">Image: <input type="file" accept="/image"></div> {% endcomment %} {{ formset.management_form }} {{ formset.as_p }} {% comment %} <button class="en-submit" type="submit">
                         Add Product
-                    </button> 
-                    <div class = "en-submit-test">Add-Test</div>
+                    </button> {% endcomment %}
+                    <div class="en-submit-test">Add Product</div>
                 </form>
             </div>
             <div class="users-admin">
