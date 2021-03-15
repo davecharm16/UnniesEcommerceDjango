@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 from account.models import Account 
 
 class AccountAdmin(UserAdmin):
-    list_display = ('email', 'username', 'date_joined', 'is_admin', 'is_staff')
+    list_display = ('email', 'username', 'date_joined', 'is_admin', 'is_staff', 'is_normal')
     search_fields = ('email', 'username')
     readonly_fields = ('id', 'date_joined')
 

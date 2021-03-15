@@ -18,6 +18,7 @@ from django.urls import path
 from admin_unnies import views
 from django.conf.urls.static import static
 from django.conf import settings
+from userauth.views import login, register
 urlpatterns = [
     path('admin/', admin.site.urls),
     #auth
@@ -29,5 +30,8 @@ urlpatterns = [
     path('adminUnniesMain/registerAdmin/', views.registerAdmin, name='registeradmin' ),
     path('adminUnniesMain/editProduct/<int:id>', views.editProduct, name='editProduct' ),
     path('adminUnniesMain/deleteProduct/<int:id>', views.deleteProduct, name='deleteProduct' ),
+    path('login/', login, name='login'),
+    path('register/', register, name='register'),
+
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

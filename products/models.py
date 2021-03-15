@@ -10,6 +10,8 @@ class Product(models.Model):
         ('Photobook', 'Photobook'),
         ('Fan lights', 'Fan lights'),
         ('Accessories', 'Accessories'),
+        ('Pre-orders', 'Pre-orders'),
+
     ]
     title = models.CharField(max_length=200)
     product_type = models.CharField(max_length=50, choices = types, default = 'Merchandise')

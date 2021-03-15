@@ -49,6 +49,7 @@ class Account(AbstractBaseUser):
     email = models.EmailField(verbose_name="email",max_length=60,unique=True)
     username = models.CharField(max_length=30, unique = True)
     date_joined = models.DateField(verbose_name="date joined", auto_now_add=True)
+    is_normal = models.BooleanField(default = False)
     is_admin = models.BooleanField(default = False)
     is_staff = models.BooleanField(default = False)
     is_active = models.BooleanField(default =True)
