@@ -1,0 +1,131 @@
+{% extends 'unnies/base.html' %} {% block content %}
+<!-- for log in
+    <div class="log-modal">
+        <div class="log-sign">
+            <div class="welcome">
+                <div class="welcome-sign">
+                    Welcome to
+                </div>
+                <div class="logo-welcome">
+                    Unnies
+                </div>
+                <div class="say">
+                    Your trusted partner in K-Shopping
+                </div>
+                <div class="in-out">
+                    <span>Have an account already?</span> <span class="in-out-but s">Log in here</span>
+                </div>
+            </div>
+            <div class="form-sign-log">
+                <div class="sign-container">
+                    <div class="set-up">Set up your account. 1/6</div>
+                    <div class="quest">
+                        <div class="question">What is your Full Name?</div>
+                        <input type="text" name="name" placeholder="Enter your name" class="input-sign">
+                    </div>
+                    <div class="buttons-sign">
+                        <div class="back">Back</div>
+                        <div class="next">Next</div>
+                    </div>
+                </div>
+                <div class="confirmation">
+                    <div class="log-text">Set up your account. Completed</div>
+                    <div class="quest">
+                        <div>Congratulations, You've Created Your Account</div>
+                    </div>
+                    <div class="buttons-sign">
+                        <div class="log-in">Log In</div>
+                    </div>
+                </div>
+
+                <div class="log-container">
+                    <div class="log-text">Log In To Your Account</div>
+                    <div class="log-form">
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="Username Here">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Password Here">
+                    </div>
+                    <div class="buttons-sign">
+                        <div class="log-next">Log In</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+<!-- for log in -->
+
+<div class="main">
+    <div class="container-box side-box">
+        <div class="carousel-box">
+            <!---Dynamic Start-->
+            {% for featured in featured %}
+                {% if forloop.first %}
+                        <div class="carousel-container">
+                        {% for image in featured.imagemodelproduct_set.all %} 
+                            {% if forloop.first %}
+                            <img class="featured-photo" src="{{ image.image.url }}">
+                            {% endif %}
+                        {% endfor %}
+                        <div class="left-click"></div>
+                        <div class="right-click"></div>
+
+                        <div class="caption">
+                            <div class="title">{{ featured.title }}</div>
+                            <div class="sale">UP to <span>40% off</span></div>
+                            <div class="act-button"><a href="#">Shop now</a></a>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                <div class="carousel-container hide">
+                    {% for image in featured.imagemodelproduct_set.all %}
+                        {% if forloop.first %}
+                            <img class="featured-photo" src="{{ image.image.url }}">   
+                        {% endif %}
+                    {% endfor %}
+                    <div class="left-click"></div>
+                    <div class="right-click"></div>
+
+                    <div class="caption">
+                        <div class="title">{{ featured.title }}</div>
+                        <div class="sale">UP to <span>40% off</span></div>
+                        <div class="act-button"><a href="#">Shop now</a></a></div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                
+            
+            {% endfor %} {% comment %} {% endcomment %}
+        </div>
+    </div>
+    <div class="container-box side-box-2">
+        <div class="container-side">
+
+            <!-- <div class="side-feature">
+                    <img src="./images/product-image/featured/feautred5.jpg">
+                    <div class="caption">
+                        <div class="title">Black Pink Light Stick</div>
+                        <div class="act-button"><a href="#">View Product</a></div>
+                    </div>
+                </div> -->
+        </div>
+    </div>
+</div>
+
+<div class="main-foot">
+    <div class="foot-content">
+        <span>90 Days return</span>
+        <span>if goods have problem</span>
+    </div>
+    <div class="foot-content">
+        <span>Secure Payment</span>
+        <span>100% Secure Payment</span>
+    </div>
+    <div class="foot-content">
+        <span>24/7 Support</span>
+        <span>Dedicated Support</span>
+    </div>
+</div>
+{% endblock content %}

@@ -7,8 +7,10 @@ from products.forms import ProductForm, ImageForm
 from django.forms import modelformset_factory, inlineformset_factory
 from django.contrib import messages
 from django.http import JsonResponse
-# Create your views here.
+from django.contrib.auth.decorators import login_required
 
+# Create your views here.
+@login_required(login_url='/adminUnnies/')
 def adminView(request):
     admins = Account.objects.filter(is_admin = True, is_superuser = False)
     product = Product.objects.all().order_by('title')
@@ -25,6 +27,7 @@ def adminView(request):
         }
     return render(request, 'admin_unnies/adminDashboard.html', context);
 
+@login_required(login_url='/adminUnnies/')
 def viewProduct(request):
     product = Product.objects.all().order_by('title')
     images = ImageModelProduct.objects.all()
@@ -35,7 +38,7 @@ def viewProduct(request):
     return render(request, 'admin_unnies/getProduct.html', context);
 
     
-
+@login_required(login_url='/adminUnnies/')
 def addProduct(request):
     ImageFormset = modelformset_factory(ImageModelProduct,form = ImageForm, extra = 4)
     prod_form = ProductForm(request.POST)
@@ -62,6 +65,7 @@ def addProduct(request):
         return redirect('adminView')
     return render(request, 'admin_unnies/adminDashboard.html', { });
 
+@login_required(login_url='/adminUnnies/')
 def editProduct(request, id):
     product = get_object_or_404(Product, pk=id)
     product_form = ProductForm(instance = product)
@@ -83,11 +87,14 @@ def editProduct(request, id):
         formset = ImageFormset(instance = product)
         return render(request,'admin_unnies/editproduct.html', {'product_form': product_form, 'formset': formset, 'product':product,})
 
+
+@login_required(login_url='/adminUnnies/')
 def deleteProduct(request, id):
     if request.method == 'POST':
         product = get_object_or_404(Product, pk=id)
         product.delete()
     return redirect('adminView')
+
 
 def adminUnniesLogin(request):
     if request.method == 'GET':
@@ -103,7 +110,7 @@ def adminUnniesLogin(request):
         else:
             return render(request, 'admin_unnies/adminlogin.html', {'error': 'Password did not match'})
 
-
+@login_required(login_url='/adminUnnies/')
 def registerAdmin(request):
     admins = Account.objects.filter(is_admin = True, is_superuser = False)
     if request.method == 'POST':

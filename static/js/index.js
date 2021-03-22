@@ -35,7 +35,7 @@ const showDialog = () => {
     body.style.position = 'fixed';
     body.style.width = '100%';
     body.style.top = `-${scrollY}`;
-    $('.log-modal').css("margin-top", `${scrollY}`);
+    // $('.pop-up-nav').css("margin-top", `${scrollY}`);
 };
 const closeDialog = () => {
     const body = document.body;
@@ -186,54 +186,54 @@ function displayQuest(s) {
     });
 }
 
-var carouselBox = $('.carousel-box');
-for (let i = 0; i < featured.length; i++) {
-    if (i == 0) {
-        carouselBox.append(
-            `<div class="carousel-container">
-                <img class="featured-photo" src="${featured[i].image}">
-                <div class="left-click"></div>
-                <div class="right-click"></div>
-    
-                <div class="caption">
-                    <div class="title">${featured[i].name}</div>
-                    <div class="sale">UP to <span>40% off</span></div>
-                    <div class="act-button"><a href="#">Shop now</a></a>
-                    </div>
-                </div>
-    
-                <div class="indicator">
-                    <div class="circle c-active"></div>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                </div>
-            </div>
-        `);
-    } else {
-        carouselBox.append(
-            `<div class="carousel-container hide">
-                <img class="featured-photo" src="${featured[i].image}">
-                <div class="left-click"></div>
-                <div class="right-click"></div>
-    
-                <div class="caption">
-                    <div class="title">${featured[i].name}</div>
-                    <div class="sale">UP to <span>40% off</span></div>
-                    <div class="act-button"><a href="#">Shop now</a></a>
-                    </div>
-                </div>
-    
-                <div class="indicator">
-                    <div class="circle"></div>
-                    <div class="circle c-active"></div>
-                    <div class="circle"></div>
-                </div>
-            </div>
-        `);
+// var carouselBox = $('.carousel-box');
+// for (let i = 0; i < featured.length; i++) {
+//     if (i == 0) {
+//         carouselBox.append(
+//             `<div class="carousel-container">
+//                 <img class="featured-photo" src="${featured[i].image}">
+//                 <div class="left-click"></div>
+//                 <div class="right-click"></div>
 
-    }
+//                 <div class="caption">
+//                     <div class="title">${featured[i].name}</div>
+//                     <div class="sale">UP to <span>40% off</span></div>
+//                     <div class="act-button"><a href="#">Shop now</a></a>
+//                     </div>
+//                 </div>
 
-}
+//                 <div class="indicator">
+//                     <div class="circle c-active"></div>
+//                     <div class="circle"></div>
+//                     <div class="circle"></div>
+//                 </div>
+//             </div>
+//         `);
+//     } else {
+//         carouselBox.append(
+//             `<div class="carousel-container hide">
+//                 <img class="featured-photo" src="${featured[i].image}">
+//                 <div class="left-click"></div>
+//                 <div class="right-click"></div>
+
+//                 <div class="caption">
+//                     <div class="title">${featured[i].name}</div>
+//                     <div class="sale">UP to <span>40% off</span></div>
+//                     <div class="act-button"><a href="#">Shop now</a></a>
+//                     </div>
+//                 </div>
+
+//                 <div class="indicator">
+//                     <div class="circle"></div>
+//                     <div class="circle c-active"></div>
+//                     <div class="circle"></div>
+//                 </div>
+//             </div>
+//         `);
+
+//     }
+
+// }
 
 var containerSide = $('.container-side')
 for (let s = 0; s < sideFeature.length; s++) {
@@ -294,9 +294,9 @@ $('.right-click').click(function() {
     }
 });
 
-$('.icon-search').click(() => {
-    $('input[name="search"]').toggle("slow");
-});
+// $('.icon-search').click(() => {
+//     $('input[name="search"]').toggle("slow");
+// });
 
 setInterval(function() {
     var current = $('.carousel-container:visible').index();

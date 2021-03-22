@@ -7,6 +7,7 @@ from .forms import RegistrationForm, ProfileForm
 from django.http import JsonResponse
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
+from unnies.views import home
 
 # Create your views here.
 
@@ -16,7 +17,7 @@ def login(request):
         user = authenticate(username = request.POST['username'], password = request.POST['password'])
         if user is not None:
             auth_login(request, user)
-            return render(request, 'userauth/login.html', {'error': 'Yow'})
+            return redirect('home')
         else:
             return render(request, 'userauth/login.html', {'error': 'Invalid Username or Password'})
     else:

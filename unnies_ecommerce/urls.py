@@ -19,6 +19,8 @@ from admin_unnies import views
 from django.conf.urls.static import static
 from django.conf import settings
 from userauth.views import login, register
+from unnies.views import home
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     #auth
@@ -32,6 +34,7 @@ urlpatterns = [
     path('adminUnniesMain/deleteProduct/<int:id>', views.deleteProduct, name='deleteProduct' ),
     path('login/', login, name='login'),
     path('register/', register, name='register'),
+    path('', home, name = 'home' ),
 
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
