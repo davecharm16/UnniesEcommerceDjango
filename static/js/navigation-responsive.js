@@ -15,6 +15,9 @@ $(window).resize(function() {
     if (window.innerWidth > 1220) {
         $('.pop').hide();
     }
+    if (window.innerWidth > 700) {
+        $('.pop-up-nav-mobile').hide();
+    }
 
 });
 

@@ -1,0 +1,87 @@
+{% extends 'unnies/base.html' %} {% block content %}
+{% load static %}
+<div class="product-container">
+    <div class="row">
+        <form class="select" action="" method="GET" id="product_type_form">
+            <span>▼</span>
+            <select name="productType">
+                <!-- <option value ="album" selected>Album</option>
+                <option value = "merchandise">Merchandise</option>
+                <option value = "photobook">Photobook</option>
+                <option value = "fanlight">Fan Lights</option>
+                <option value = "accessories">Accessories</option> -->
+                <option value = "All"> All Products</option>
+                {% for product_type in product_types %}
+                    {% if selected == product_type %}
+                        <option value = "{{ product_type }}" selected>{{ product_type }}</option>
+                        {% else %}
+                        <option value = "{{ product_type }}">{{ product_type }}</option>
+                    {% endif %}
+                        
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+
+    <div class="products">
+        <div class="product-type">
+            <h2>{% if selected == None %} All {% else %}{{ selected }}{% endif %}</h2>
+        </div>
+        <div class="product-holder">
+            {% for product in page_obj %}
+                <a href="{% url 'view_product' product.id %}">
+                    <div class="product-card">
+                        {% for image in product.imagemodelproduct_set.all %}
+                            {% if forloop.first %}
+                                <img class="product-image" src="{{ image.image.url }}">
+                            {% endif %}
+                        {% endfor %}
+                        <div class="product-name">{{ product.title }}</div>
+                        <div class="product-price">₱{{ product.price }}</div>
+                    </div>
+                </a>
+            {% endfor %}
+            <!-- <div class="product-card">
+                    <img class="product-image" src="./images/product-image/albums/bts/bts1.jpg">
+                    <div class="product-name">BTS - Dynamite Album</div>
+                    <div class="product-price">₱1200</div>
+                </div>
+                <div class="product-card">
+                    <img class="product-image" src="./images/product-image/albums/bts/bts2.jpg">
+                    <div class="product-name">BTS- Map of the Souls</div>
+                    <div class="product-price">₱1100</div>
+                </div>
+                <div class="product-card">
+                    <img class="product-image" src="./images/product-image/albums/bts/bts3.jpg">
+                    <div class="product-name">BTS - Wings Album</div>
+                    <div class="product-price">₱1150</div>
+                </div>
+                <div class="product-card">
+                    <img class="product-image" src="./images/product-image/albums/twice/twice1.jpg">
+                    <div class="product-name">TWICE- Eyes Wide Open</div>
+                    <div class="product-price">₱1150</div>
+                </div> -->
+        </div>
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last</a>
+            {% endif %}
+        </span>
+    </div>
+
+</div>
+<script src="{% static 'resources/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'js/products.js' %}"></script>
+{% endblock content %}

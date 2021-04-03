@@ -20,18 +20,18 @@
 <body>
     <div class="pop-up-nav pop" id="pop-tab">
         <ul class="nav-burger">
-            <li class="active">
-                <a href="#">HOME</a>
+            <li class="">
+                <a href="{% url 'home' %}">HOME</a>
             </li>
             <li>
-                <a href="./products.html">PRODUCTS</a>
+                <a href="{% url 'products' %}">PRODUCTS</a>
             </li>
             <li>
                 <a href="./featured.html">FEATURED</a>
             </li>
             {% comment %} {% endcomment %}
             <li>
-                <a href="./profile.html"><i class="fa fa-user icon"></i></a>
+                <a href="{% url 'view_profile' %}"><i class="fa fa-user icon"></i></a>
             </li>
             <li>
                 <a href="./cart.html"><i class="fa fa-shopping-cart icon"></i></a>
@@ -46,18 +46,18 @@
                     <i class="fa fa-search icon icon-search"></i>
                 </form>
             </li>
-            <li class="active">
-                <a href="#">HOME</a>
+            <li class="">
+                <a href="{% url 'home' %}">HOME</a>
             </li>
             <li>
-                <a href="./products.html">PRODUCTS</a>
+                <a href="{% url 'products' %}">PRODUCTS</a>
             </li>
             <li>
                 <a href="./featured.html">FEATURED</a>
             </li>
             {% comment %} {% endcomment %}
             <li>
-                <a href="./profile.html"><i class="fa fa-user icon"></i></a>
+                <a href="{% url 'view_profile' %}"><i class="fa fa-user icon"></i></a>
             </li>
             <li>
                 <a href="./cart.html"><i class="fa fa-shopping-cart icon"></i></a>
@@ -66,13 +66,13 @@
     </div>
     <header>
         <nav class="desktop-nav">
-            <a href="#"><span class="logo">Unnies</span></a>
+            <a href="{% url 'home' %}"><span class="logo">Unnies</span></a>
             <ul>
-                <li class="active">
-                    <a href="#">HOME</a>
+                <li class="">
+                    <a href="{% url 'home' %}">HOME</a>
                 </li>
                 <li>
-                    <a href="./products.html">PRODUCTS</a>
+                    <a href="{% url 'products' %}">PRODUCTS</a>
                 </li>
                 <li>
                     <a href="./featured.html">FEATURED</a>
@@ -84,7 +84,7 @@
                     </form>
                 </li>
                 <li>
-                    <a href="./profile.html"><i class="fa fa-user icon"></i></a>
+                    <a href="{% url 'view_profile' %}"><i class="fa fa-user icon"></i></a>
                 </li>
                 <li>
                     <a href="./cart.html"><i class="fa fa-shopping-cart icon"></i></a>
@@ -92,7 +92,7 @@
             </ul>
         </nav>
         <nav class="tablet-mobile-nav">
-            <a href="#"><span class="logo">Unnies</span></a>
+            <a href="{% url 'home' %}"><span class="logo">Unnies</span></a>
             <ul>
                 <li>
                     <form class="example" action="index.html">
@@ -106,7 +106,7 @@
             </ul>
         </nav>
         <nav class="mobile-nav">
-            <a href="#"><span class="logo">Unnies</span></a>
+            <a href="{% url 'home' %}"><span class="logo">Unnies</span></a>
             <ul>
                 <li>
                     <i class="fa fa-bars mobile-burger" id="burger-icon"></i>

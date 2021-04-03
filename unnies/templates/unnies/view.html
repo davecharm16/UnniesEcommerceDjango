@@ -1,0 +1,83 @@
+{% extends 'unnies/base.html' %} {% load static %} {% block content %}
+<div class="view-body">
+    <div class="gallery-container">
+        <div class="view-photo">
+            {% for images in product.imagemodelproduct_set.all %} {% if forloop.first %}
+            <img src="{{ images.image.url }}"> {% endif %} {% endfor %}
+        </div>
+        <div class="gallery-photo">
+            {% for images in product.imagemodelproduct_set.all %}
+            <div class="var-photo">
+                <img src="{{ images.image.url }}">
+            </div>
+            {% endfor %} {% comment %}
+            <div class="var-photo">
+                <img src="./images/product-image/merchandise/bp3var/3.jpg">
+            </div>
+            <div class="var-photo">
+                <img src="./images/product-image/merchandise/bp3var/4.jpg">
+            </div>
+            <div class="var-photo">
+                <img src="./images/product-image/merchandise/bp3var/5.jpg">
+            </div> {% endcomment %}
+        </div>
+    </div>
+    <div class="gallery-container descriptions">
+        <div class="item-title">
+            {{product.title}}
+        </div>
+        <div class="item-status">
+            <div class="solds-rate">
+                {{product.sold}} Sold | <span class="stars">⋆⋆⋆⋆</span>
+            </div>
+        </div>
+        <div class="item-price">
+            ₱{{ product.price }}
+        </div>
+        {% comment %}
+        <div class="variation">
+            <div class="var-text">Variation</div>
+            <div class="var">
+                <div class="variation-select">
+                    <span>▼</span>
+                    <select>
+                            <option>Color</option>
+                        </select>
+                </div>
+                <div class="variation-select">
+                    <span>▼</span>
+                    <select>
+                            <option>Color</option>
+                        </select>
+                </div>
+            </div>
+        </div> {% endcomment %}
+        <div class="quantity-container">
+            <div class="q-text">Quantity</div>
+            <div class="q-button">
+                <button class="op minus">-</button>
+                <div class="quantity">1</div>
+                <button class="op plus">+</button>
+            </div>
+            <div class="stocks">
+                <div class="stock-text"><span class="stock-qty"> {{ product.stocks }} </span> piece/s available</div>
+            </div>
+        </div>
+        {% if product.stocks == 0 %}
+            <div class="out-of-stock">
+                Out of Stock!
+            </div>
+            {% else %}
+            <div class="add-cart">
+                Add to Cart
+            </div>
+        {% endif %}
+        
+        <div class="product-description">
+            <b>Product Description: </b>
+            <br> &nbsp;&nbsp;&nbsp;&nbsp;{{ product.description }}
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/view_product.js' %}"></script>
+{% endblock content %}

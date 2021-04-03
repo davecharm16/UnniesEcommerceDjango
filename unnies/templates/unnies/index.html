@@ -59,57 +59,51 @@
     <div class="container-box side-box">
         <div class="carousel-box">
             <!---Dynamic Start-->
-            {% for featured in featured %}
-                {% if forloop.first %}
-                        <div class="carousel-container">
-                        {% for image in featured.imagemodelproduct_set.all %} 
-                            {% if forloop.first %}
-                            <img class="featured-photo" src="{{ image.image.url }}">
-                            {% endif %}
-                        {% endfor %}
-                        <div class="left-click"></div>
-                        <div class="right-click"></div>
+            {% for featured in featured %} {% if forloop.first %}
+            <div class="carousel-container">
+                {% for image in featured.imagemodelproduct_set.all %} {% if forloop.first %}
+                <img class="featured-photo" src="{{ image.image.url }}"> {% endif %} {% endfor %}
+                <div class="left-click"></div>
+                <div class="right-click"></div>
 
-                        <div class="caption">
-                            <div class="title">{{ featured.title }}</div>
-                            <div class="sale">UP to <span>40% off</span></div>
-                            <div class="act-button"><a href="#">Shop now</a></a>
-                            </div>
-                        </div>
-                    </div>
-                {% else %}
-                <div class="carousel-container hide">
-                    {% for image in featured.imagemodelproduct_set.all %}
-                        {% if forloop.first %}
-                            <img class="featured-photo" src="{{ image.image.url }}">   
-                        {% endif %}
-                    {% endfor %}
-                    <div class="left-click"></div>
-                    <div class="right-click"></div>
-
-                    <div class="caption">
-                        <div class="title">{{ featured.title }}</div>
-                        <div class="sale">UP to <span>40% off</span></div>
-                        <div class="act-button"><a href="#">Shop now</a></a></div>
-                    </div>
+                <div class="caption">
+                    <div class="title">{{ featured.title }}</div>
+                    <div class="sale">UP to <span>40% off</span></div>
+                    <a href="{% url 'view_product' featured.id %}">
+                        <div class="act-button">Shop now</div>
+                    </a>
                 </div>
-                {% endif %}
-                
-                
-            
-            {% endfor %} {% comment %} {% endcomment %}
+            </div>
+            {% else %}
+            <div class="carousel-container hide">
+                {% for image in featured.imagemodelproduct_set.all %} {% if forloop.first %}
+                <img class="featured-photo" src="{{ image.image.url }}"> {% endif %} {% endfor %}
+                <div class="left-click"></div>
+                <div class="right-click"></div>
+
+                <div class="caption">
+                    <div class="title">{{ featured.title }}</div>
+                    <div class="sale">UP to <span>40% off</span></div>
+                    <a href="{% url 'view_product' featured.id %}">
+                        <div class="act-button">Shop now</div>
+                    </a>
+                </div>
+            </div>
+            {% endif %} {% endfor %} {% comment %} {% endcomment %}
         </div>
     </div>
     <div class="container-box side-box-2">
         <div class="container-side">
-
-            <!-- <div class="side-feature">
-                    <img src="./images/product-image/featured/feautred5.jpg">
-                    <div class="caption">
-                        <div class="title">Black Pink Light Stick</div>
-                        <div class="act-button"><a href="#">View Product</a></div>
-                    </div>
-                </div> -->
+            {% for content in sideContent %}
+            <div class="side-feature">
+                {% for image in content.imagemodelproduct_set.all %} {% if forloop.first %}
+                <img src="{{ image.image.url }}"> {% endif %} {% endfor %}
+                <div class="caption">
+                    <div class="title">{{ content.title }}</div>
+                    <div class="act-button"><a href="{% url 'view_product' content.id %}">View Product</a></div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>

@@ -183,6 +183,7 @@ nav ul li:hover {
     padding: 0.5rem;
     background-color: #CF9500;
     transition: all 0.5s ease;
+    color: #fff;
 }
 
 .act-button:hover {
@@ -700,6 +701,7 @@ select {
 .product-price {
     font-size: 1.5rem;
     font-family: var(--prompt);
+    text-align: center;
 }
 
 .featured-card .product-name,
@@ -719,7 +721,7 @@ select {
 .view-body {
     /* border: 1px solid black; */
     display: flex;
-    height: 850px;
+    min-height: 850px;
     width: 95%;
     margin: auto;
 }
@@ -884,7 +886,8 @@ select {
     margin-top: 2rem;
 }
 
-.add-cart {
+.add-cart,
+.out-of-stock {
     margin-top: 3rem;
     width: 40%;
     min-width: 145px;
@@ -2278,14 +2281,72 @@ input[name="p"] {
 }
 
 .nav-burger li {
-    transition: all 0.5s ease;
+    transition: all 0.2s ease-in-out;
 }
 
 .nav-burger li:hover {
     border-bottom: 3px solid #CF9500;
 }
 
+.pagination {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    font-family: var(--prompt);
+    font-size: 1rem;
+}
+
+.pagination a {
+    color: blue;
+    transition: all 0.3s ease-in;
+}
+
+.pagination a:hover {
+    color: #cf9500;
+}
+
+.product-description {
+    margin-top: 1rem;
+    width: 100%;
+    font-size: 1.2rem;
+    line-height: 145%;
+}
+
 @media only screen and (max-width: 1220px) {
+    .profile-body {
+        flex-wrap: wrap;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 135px;
+    }
+    .profile {
+        width: 100%;
+        padding: 0;
+    }
+    .sidebar {
+        flex-direction: row;
+        justify-content: space-around;
+        height: initial;
+        width: 100%;
+    }
+    .account-tab {
+        display: flex;
+        flex-direction: column;
+        font-size: 1rem;
+    }
+    .save-but {
+        margin-left: 10px;
+    }
+    .infos,
+    .infos>input {
+        font-size: 1rem;
+    }
+    .my-acc {
+        font-size: 1.2rem;
+    }
+    .username {
+        font-size: 1.2rem
+    }
     .desktop-nav {
         display: none;
     }
@@ -2343,9 +2404,24 @@ input[name="p"] {
     .side-feature {
         width: 100%;
     }
+    .product-holder {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .product-card {
+        height: 400px;
+    }
+    .product-name {
+        font-size: 1.2rem;
+    }
+    .product-price {
+        font-size: 1rem;
+    }
 }
 
-@media only screen and (max-width:700px) {
+@media only screen and (max-width:720px) {
+    .infos>input {
+        font-size: 0.8rem;
+    }
     .pop-up-nav-mobile {
         z-index: 100;
         position: fixed;
@@ -2395,5 +2471,36 @@ input[name="p"] {
     }
     .footer {
         flex-wrap: wrap;
+    }
+    .product-container {
+        padding: 100px 1.5rem 1rem 1.5rem;
+    }
+    .product-holder {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    .product-card {
+        height: 250px;
+    }
+    .product-name {
+        font-size: 1rem;
+    }
+    .product-price {
+        font-size: 0.8rem;
+    }
+    .pagination {
+        font-size: 0.8rem;
+    }
+    .gallery-container {
+        width: 100%;
+    }
+    .view-body {
+        min-height: 100vh;
+        flex-wrap: wrap;
+    }
+    .view-photo {
+        height: 300px;
+    }
+    .add-cart {
+        font-size: 1.2rem;
     }
 }

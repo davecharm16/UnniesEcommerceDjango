@@ -7,10 +7,11 @@ from products.forms import ProductForm, ImageForm
 from django.forms import modelformset_factory, inlineformset_factory
 from django.contrib import messages
 from django.http import JsonResponse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
 @login_required(login_url='/adminUnnies/')
+@permission_required('account.has_perm', login_url='/adminUnnies/')
 def adminView(request):
     admins = Account.objects.filter(is_admin = True, is_superuser = False)
     product = Product.objects.all().order_by('title')
@@ -28,6 +29,7 @@ def adminView(request):
     return render(request, 'admin_unnies/adminDashboard.html', context);
 
 @login_required(login_url='/adminUnnies/')
+@permission_required('account.has_perm', login_url='/adminUnnies/')
 def viewProduct(request):
     product = Product.objects.all().order_by('title')
     images = ImageModelProduct.objects.all()
@@ -39,6 +41,7 @@ def viewProduct(request):
 
     
 @login_required(login_url='/adminUnnies/')
+@permission_required('account.has_perm', login_url='/adminUnnies/')
 def addProduct(request):
     ImageFormset = modelformset_factory(ImageModelProduct,form = ImageForm, extra = 4)
     prod_form = ProductForm(request.POST)
@@ -66,6 +69,7 @@ def addProduct(request):
     return render(request, 'admin_unnies/adminDashboard.html', { });
 
 @login_required(login_url='/adminUnnies/')
+@permission_required('account.has_perm', login_url='/adminUnnies/')
 def editProduct(request, id):
     product = get_object_or_404(Product, pk=id)
     product_form = ProductForm(instance = product)
@@ -89,6 +93,7 @@ def editProduct(request, id):
 
 
 @login_required(login_url='/adminUnnies/')
+@permission_required('account.has_perm', login_url='/adminUnnies/')
 def deleteProduct(request, id):
     if request.method == 'POST':
         product = get_object_or_404(Product, pk=id)
@@ -111,6 +116,7 @@ def adminUnniesLogin(request):
             return render(request, 'admin_unnies/adminlogin.html', {'error': 'Password did not match'})
 
 @login_required(login_url='/adminUnnies/')
+@permission_required('account.has_perm', login_url='/adminUnnies/')
 def registerAdmin(request):
     admins = Account.objects.filter(is_admin = True, is_superuser = False)
     if request.method == 'POST':

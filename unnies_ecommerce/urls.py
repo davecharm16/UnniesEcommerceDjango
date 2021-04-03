@@ -19,7 +19,7 @@ from admin_unnies import views
 from django.conf.urls.static import static
 from django.conf import settings
 from userauth.views import login, register
-from unnies.views import home
+from unnies.views import home, products, view_product, view_profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,6 +35,9 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('register/', register, name='register'),
     path('', home, name = 'home' ),
+    path('products/', products, name = 'products' ),
+    path('viewproduct/<int:id>', view_product, name="view_product"),
+    path('profile/', view_profile, name = 'view_profile')
 
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

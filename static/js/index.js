@@ -235,19 +235,19 @@ function displayQuest(s) {
 
 // }
 
-var containerSide = $('.container-side')
-for (let s = 0; s < sideFeature.length; s++) {
-    containerSide.append(
-        `
-    <div class="side-feature">
-        <img src="${sideFeature[s].image}">
-        <div class="caption">
-            <div class="title">${sideFeature[s].name}</div>
-            <div class="act-button"><a href="#">View Product</a></div>
-        </div>
-    </div>`
-    );
-}
+// var containerSide = $('.container-side')
+// for (let s = 0; s < sideFeature.length; s++) {
+//     containerSide.append(
+//         `
+//     <div class="side-feature">
+//         <img src="${sideFeature[s].image}">
+//         <div class="caption">
+//             <div class="title">${sideFeature[s].name}</div>
+//             <div class="act-button"><a href="#">View Product</a></div>
+//         </div>
+//     </div>`
+//     );
+// }
 
 
 $('.left-click').click(function() {
@@ -325,20 +325,22 @@ setInterval(function() {
 
 
 
-$('.side-feature').click(
-    function() {
-        var y = JSON.stringify(sideFeature[$(this).index()]);
-        localStorage.setItem('view', y);
-        window.location.href = "view.html";
-        //yow
-    }
-);
+// $('.side-feature').click(
+//     function() {
+//         var y = JSON.stringify(sideFeature[$(this).index()]);
+//         localStorage.setItem('view', y);
+//         window.location.href = "view.html";
+//         //yow
+//     }
+// );
 
-$('.carousel-container .caption .act-button').click(function() {
-    var y = JSON.stringify(featured[$(this).parent().parent().index()]);
-    localStorage.setItem('view', y);
-    window.location.href = "view.html";
-});
+// $('.carousel-container .caption .act-button').click(function() {
+//     var y = JSON.stringify(featured[$(this).parent().parent().index()]);
+//     localStorage.setItem('view', y);
+//     window.location.href = "view.html";
+// });
+
+
 
 
 //Featured Area
@@ -393,6 +395,9 @@ var albums = [
     new Products("BTS - Wings Album", "./images/product-image/albums/bts/bts3.jpg", 1150, "album", 250, [], ["./images/product-image/albums/bts/bts3.jpg"], 4, 1),
     new Products("Twice- Eyes wide Open", "./images/product-image/albums/twice/twice1.jpg", 1100, "album", 250, [], ["./images/product-image/albums/twice/twice1.jpg", "./images/product-image/albums/twice/twicevar/t2.jpg", "./images/product-image/albums/twice/twicevar/t3.jpg"], 4, 1),
     new Products("Black Pink The Album", "./images/product-image/featured/featured2.jpg", 2350, "album", 150, [], ["./images/product-image/featured/featured2.jpg", "./images/product-image/albums/bp/bpvar/bp1.png"], 5, 1),
+    new Products("Black Season Greetings", "./images/product-image/albums/bp/bp1.jpg", 1950, "album", 150, [], ["./images/product-image/albums/bp/bp1.jpg"], 4, 1),
+    new Products("Black Season Greetings", "./images/product-image/albums/bp/bp1.jpg", 1950, "album", 150, [], ["./images/product-image/albums/bp/bp1.jpg"], 4, 1),
+    new Products("Black Season Greetings", "./images/product-image/albums/bp/bp1.jpg", 1950, "album", 150, [], ["./images/product-image/albums/bp/bp1.jpg"], 4, 1),
     new Products("Black Season Greetings", "./images/product-image/albums/bp/bp1.jpg", 1950, "album", 150, [], ["./images/product-image/albums/bp/bp1.jpg"], 4, 1),
 ];
 var merchandise = [
@@ -466,135 +471,139 @@ function selectedProduct() {
 }
 
 
-$('.products-html').ready(function() { updateContent(); });
+// $('.products-html').ready(function() { updateContent(); });
 
-function updateContent() {
-    selectedValue = select.val();
-    var selectedTitle = $('select option:selected').text();
+// function updateContent() {
+//     selectedValue = select.val();
+//     var selectedTitle = $('select option:selected').text();
 
-    productType.text(selectedTitle);
+//     productType.text(selectedTitle);
+//     $('#product_type_form').submit()
+//     console.log(selectedValue);
+//     var prodArray = selectedProduct();
+//     //remove first the display products
+//     $('.product-card').remove();
 
-    console.log(selectedValue);
-    var prodArray = selectedProduct();
-    //remove first the display products
-    $('.product-card').remove();
+//     for (let x = 0; x < prodArray.length; x++) {
+//         productHolder.append(
+//             `
+//         <div class="product-card">
+//                 <img class="product-image" src="${prodArray[x].image}">
+//                 <div class="product-name">${prodArray[x].name}</div>
+//                 <div class="product-price">₱${prodArray[x].price}</div>
+//         </div>
+//         `
+//         );
+//     }
+//     $('.product-card').click(
+//         function() {
+//             // console.log(prodArray[$(this).index()]);
+//             var y = JSON.stringify(prodArray[$(this).index()]);
+//             localStorage.setItem('view', y);
+//             window.location.href = "view.html";
+//             // updateView();
+//         }
+//     );
 
-    for (let x = 0; x < prodArray.length; x++) {
-        productHolder.append(
-            `
-            <div class="product-card">
-                    <img class="product-image" src="${prodArray[x].image}">
-                    <div class="product-name">${prodArray[x].name}</div>
-                    <div class="product-price">₱${prodArray[x].price}</div>
-            </div>
-            `
-        );
-    }
-    $('.product-card').click(
-        function() {
-            // console.log(prodArray[$(this).index()]);
-            var y = JSON.stringify(prodArray[$(this).index()]);
-            localStorage.setItem('view', y);
-            window.location.href = "view.html";
-            // updateView();
-        }
-    );
-}
+// }
 
-select.change(updateContent);
+// select.change(updateContent);
 
 
 
 //CLicking products
 
+updateView()
 
 function updateView() {
     //new Products("BTS - Coin Purse", "./images/product-image/accessories/bts/bts2.jpg", 599, "accessories", 250, [], ["./images/product-image/accessories/bts/bts2.jpg"]),
     // name, image, price, type, stocks, variety, gallery
 
-    var view = $('.view-body');
-    var item = localStorage.getItem('view');
-    item = JSON.parse(item);
-    const price = item.price;
-    const name = item.name;
-    const img = item.gallery[0];
-    const gallery = item.gallery;
-    const variety = item.variety;
-    const stocks = item.stocks;
-    const sold = Math.floor(Math.random() * (stocks - 15));
-    const available = stocks - sold
+    // var view = $('.view-body');
+    // var item = localStorage.getItem('view');
+    // item = JSON.parse(item);
+    // const price = item.price;
+    // const name = item.name;
+    // const img = item.gallery[0];
+    // const gallery = item.gallery;
+    // const variety = item.variety;
+    // const stocks = item.stocks;
+    // const sold = Math.floor(Math.random() * (stocks - 15));
+    // const available = stocks - sold
 
-    view.append(
-        `
-        <div class="gallery-container">
-            <div class="view-photo">
-            </div>
-            <div class="gallery-photo">
-            </div>
-        </div>
-        <div class="gallery-container descriptions">
-            <div class="item-title">
-                Black Pink The Album Hoodie
-            </div>
-            <div class="item-status">
-                <div class="solds-rate">
-                </div>
-            </div>
-            <div class="item-price">
-                ₱799
-            </div>
-            <div class="variation">
-                <div class="var-text">Variation</div>
-                <div class="var">
-                </div>
-            </div>
-            <div class="quantity-container">
-                <div class="q-text">Quantity</div>
-                <div class="q-button">
-                    <button class="op minus">-</button>
-                    <div class="quantity">0</div>
-                    <button class="op plus">+</button>
-                </div>
-                <div class="stocks">
-                    <div class="stock-text">200 piece/s available</div>
-                </div>
-            </div>
-            <div class="add-cart">
-                Add to Cart
-            </div>
-        </div>
-        `
-    );
+    // view.append(
+    //     `
+    //     <div class="gallery-container">
+    //         <div class="view-photo">
+    //         </div>
+    //         <div class="gallery-photo">
+    //         </div>
+    //     </div>
+    //     <div class="gallery-container descriptions">
+    //         <div class="item-title">
+    //             Black Pink The Album Hoodie
+    //         </div>
+    //         <div class="item-status">
+    //             <div class="solds-rate">
+    //             </div>
+    //         </div>
+    //         <div class="item-price">
+    //             ₱799
+    //         </div>
+    //         <div class="variation">
+    //             <div class="var-text">Variation</div>
+    //             <div class="var">
+    //             </div>
+    //         </div>
+    //         <div class="quantity-container">
+    //             <div class="q-text">Quantity</div>
+    //             <div class="q-button">
+    //                 <button class="op minus">-</button>
+    //                 <div class="quantity">0</div>
+    //                 <button class="op plus">+</button>
+    //             </div>
+    //             <div class="stocks">
+    //                 <div class="stock-text">200 piece/s available</div>
+    //             </div>
+    //         </div>
+    //         <div class="add-cart">
+    //             Add to Cart
+    //         </div>
+    //     </div>
+    //     `
+    // );
 
-    var photo = $('.view-photo');
-    photo.append(`
-    <img src="${gallery[0]}">
-    `);
+    // var photo = $('.view-photo');
+    // photo.append(`
+    // <img src="${gallery[0]}">
+    // `);
 
-    createGallery($('.gallery-photo'), gallery);
+    // createGallery($('.gallery-photo'), gallery);
 
-    $('.item-title').text(`${item.name}`);
+    // $('.item-title').text(`${item.name}`);
 
-    setRating($('.solds-rate'), item.rate, sold);
+    // setRating($('.solds-rate'), item.rate, sold);
 
-    $('.item-price').text(`₱${item.price}`);
+    // $('.item-price').text(`₱${item.price}`);
 
-    createVariation($('.var'), variety);
-    $('.quantity').text(item.qty.toString());
+    // createVariation($('.var'), variety);
+    // $('.quantity').text(item.qty.toString());
     $('.plus').click(function() {
-        addQty(item);
+        addQty();
     });
     $('.minus').click(function() {
-        minQty(item);
+        minQty();
     });
 
-    $('.stock-text').text(`${available} piece/s available`)
-    console.log(item);
+    // $('.stock-text').text(`${available} piece/s available`)
+    // console.log(item);
 
     $('.var-photo').click(
         function() {
-            var index = $(this).index();
-            $('.view-photo img').attr("src", gallery[index]);
+            var img_src = this.children[0].src;
+            console.log(this)
+            console.log(img_src)
+            $('.view-photo img').attr("src", img_src);
         }
     );
 
@@ -617,81 +626,85 @@ function addCart(item) {
 }
 
 
-function createGallery(place, gallery) {
-    // console.log(gallery);
-    for (let i = 0; i < gallery.length; i++) {
-        place.append(
-            `
-            <div class="var-photo">
-                    <img src="${gallery[i]}">
-            </div>
-            `
-        );
-    }
-}
+// function createGallery(place, gallery) {
+//     // console.log(gallery);
+//     for (let i = 0; i < gallery.length; i++) {
+//         place.append(
+//             `
+//             <div class="var-photo">
+//                     <img src="${gallery[i]}">
+//             </div>
+//             `
+//         );
+//     }
+// }
 
-function setRating(place, rate, sold) {
-    // 5 Sold | <span class="stars">⋆⋆⋆⋆</span>
-    console.log(sold);
-    var r = "";
-    for (var i = 0; i < rate; i++) {
-        r += "⋆";
-    }
-    place.append(
-        `
-        ${sold.toString()} Sold | <span class="stars">${r}</span>
-        `
-    )
-}
+// function setRating(place, rate, sold) {
+//     // 5 Sold | <span class="stars">⋆⋆⋆⋆</span>
+//     console.log(sold);
+//     var r = "";
+//     for (var i = 0; i < rate; i++) {
+//         r += "⋆";
+//     }
+//     place.append(
+//         `
+//         ${sold.toString()} Sold | <span class="stars">${r}</span>
+//         `
+//     )
+// }
 
-function createVariation(place, variation) {
-    // console.log(variation);
-    if (variation.length == 0) {
-        place.append(
-            `
-            <h3>None</h3>
-            `);
+// function createVariation(place, variation) {
+//     // console.log(variation);
+//     if (variation.length == 0) {
+//         place.append(
+//             `
+//             <h3>None</h3>
+//             `);
+//     } else {
+//         for (let i = 0; i < variation.length; i++) {
+//             place.append(`
+//                     <div class="variation-select">
+//                     <span>▼</span>
+//                     <select>
+//                     </select>
+//                     </div>
+//             `);
+//             for (let j = 0; j < variation[i].length; j++) {
+//                 var sel = $('.variation-select').eq(i).children('select');
+//                 sel.append(`
+//                 <option value="${variation[i][j]}">${variation[i][j]}</option>
+//                 `);
+//             }
+//         }
+//     }
+
+// }
+
+
+function addQty() {
+    var qty = $('.quantity').text();
+    qty = parseInt(qty, 10);
+    if (qty >= parseInt($('.stock-qty').text(), 10)) {
+        qty = qty;
     } else {
-        for (let i = 0; i < variation.length; i++) {
-            place.append(`
-                    <div class="variation-select">
-                    <span>▼</span>
-                    <select>
-                    </select>
-                    </div>
-            `);
-            for (let j = 0; j < variation[i].length; j++) {
-                var sel = $('.variation-select').eq(i).children('select');
-                sel.append(`
-                <option value="${variation[i][j]}">${variation[i][j]}</option>
-                `);
-            }
-        }
+        qty += 1;
     }
-
-}
-
-
-function addQty(item) {
-    var qty = $('.quantity').text();
-    qty = parseInt(qty, 10);
-    qty += 1;
     $('.quantity').text(qty.toString());
-    item.qty = qty;
-    localStorage.setItem('view', JSON.stringify(item));
+    // item.qty = qty;
+    // localStorage.setItem('view', JSON.stringify(item));
 }
 
-function minQty(item) {
+function minQty() {
     var qty = $('.quantity').text();
     qty = parseInt(qty, 10);
-    if (qty == 1) {
+    if (qty <= 1) {
         qty = 1;
     } else {
         qty -= 1;
     }
     $('.quantity').text(qty.toString());
-    item.qty = qty;
-    localStorage.setItem('view', JSON.stringify(item));
+    // item.qty = qty;
+    // localStorage.setItem('view', JSON.stringify(item));
 }
 
 
@@ -835,19 +848,19 @@ function setOrder(order) {
 }
 
 //Profile
+getProfile()
 
 function getProfile() {
-    var infos = $('.infos input');
-    for (var x = 0; x < infos.length; x++) {
-        var value = $(infos[x]).val();
-        var name = $(infos[x]).attr('name');
-        if (localStorage.getItem(name) === null) {
-            localStorage.setItem(name, JSON.stringify(value));
-        }
-        var new_val = localStorage.getItem(name);
-        $(infos[x]).attr('value', JSON.parse(new_val));
-    }
-    $('.username').text(`${JSON.parse(localStorage.getItem('username'))}`);
+    // var infos = $('.infos input');
+    // for (var x = 0; x < infos.length; x++) {
+    //     var value = $(infos[x]).val();
+    //     var name = $(infos[x]).attr('name');
+    //     if (localStorage.getItem(name) === null) {
+    //         localStorage.setItem(name, JSON.stringify(value));
+    //     }
+    //     var new_val = localStorage.getItem(name);
+    //     $(infos[x]).attr('value', JSON.parse(new_val));
+    // }
     $('.profile-container').siblings().slideUp("slow").hide();
     $('.profile-container').slideDown("slow");
 }
@@ -1226,10 +1239,10 @@ $('.d-rate').click(function() {
     $(this).parent().find('span').css('pointer-events', 'none');
 });
 
-$('.signout-but').click(function() {
-    window.location.href = "index.html";
-    localStorage.setItem('logIn', 'false');
-});
+// $('.signout-but').click(function() {
+//     window.location.href = "index.html";
+//     localStorage.setItem('logIn', 'false');
+// });
 
 
 // ----------ADDMIN JS ---------//

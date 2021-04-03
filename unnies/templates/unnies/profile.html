@@ -1,0 +1,141 @@
+{% extends 'unnies/base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="profile-body">
+        <div class="cc-modal">
+            <div class="cc-form">
+                <div>Card Information Form</div>
+                <div class="cards-cc">
+                    <span>Accepted Cards</span>
+                    <img src="./images/cc-img/mastercard.png" alt="master">
+                    <img src="./images/cc-img/visa.jpg" alt="visa">
+                </div>
+                <div class="n-card">
+                    <label>Name on Card</label>
+                    <input type="text" name="name-card" placeholder="Dave Charm Bulaquena">
+                </div>
+                <div class="n-card">
+                    <label>Credit Card Number</label>
+                    <input name="cc-number" type="text" maxlength="16" placeholder="1111 2222 3333 4444" />
+                </div>
+                <div class="n-card">
+                    <label>Expiry Month</label>
+                    <input type="text" name="cc-month" placeholder="September">
+                </div>
+                <div class="t-card">
+                    <div class="t-c">
+                        <label>Expiry Year</label>
+                        <input type="text" name="cc-year" placeholder="2024" maxlength="4">
+                    </div>
+                    <div>
+                        <label>CCV</label>
+                        <input type="number" name="ccv" placeholder="324" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="3">
+                    </div>
+                </div>
+                <div class="cards-cc">
+                    <div class="cancel-cc">Cancel</div>
+                    <div class="save-cc">Save</div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="avatar">
+                <div class="avatar-border">
+                    <i class="fa fa-user icon icon-avatar"></i>
+                </div>
+                <div class="username">@{{ request.user }}</div>
+            </div>
+            <div class="account-tab">
+                <div class="my-acc">
+                    My Account <span class="tog">▼</span>
+                </div>
+                <div class="tabs-nav">
+                    <div class="my-profile tab-active">Profile</div>
+                    {% comment %} <div class="b-c">Credit Cards</div> {% endcomment %}
+                    <div class="p-history">Purchase History</div>
+                </div>
+            </div>
+        </div>
+        <div class="profile">
+            <div class="profile-container">
+                <div class="infos">
+                    <label class="info-label"> Username:</label>
+                    <input type="text" value="username" name="username">
+                </div>
+                <div class="infos">
+                    <label class="info-label"> Password: </label>
+                    <input type="password" value="dave" name="password">
+                </div>
+                <div class="infos">
+                    <label class="info-label">Full Name:</label>
+                    <input type="text" value="Dave Charm Barboco Bulaquena" name="name">
+                </div>
+                <div class="infos">
+                    <label class="info-label"> Phone Number:</label>
+                    <input type="text" value="09267138677" name="phone">
+                </div>
+                <div class="infos">
+                    <label class="info-label"> Email:</label>
+                    <input type="email" value="davecharm16@gmail.com" name="email">
+                </div>
+                <div class="infos">
+                    <label class="info-label"> Address:</label>
+                    <input type="text" value="#452 Talospatang, Malasiqui, Pangasinan" name="address">
+                </div>
+                <div class="save">
+                    <div class="save-but">Save</div>
+                    <div class="signout-but">Sign out</div>
+                </div>
+            </div>
+            <div class="purchase-container">
+                <div class="ph">
+                    <div class="p-head">
+                        <div class="t-recieve tab-active">
+                            To Receive
+                        </div>
+                        <div class="delivered">
+                            Delivered
+                        </div>
+                    </div>
+                </div>
+                <div class="to-recieve">
+                    <div class="item-recieve">
+                        <img src="./images/product-image/albums/bp/bp1.jpg" alt="">
+                        <div class="r-name">BTS- THe Albuma</div>
+                        <div class="r-price">Price: 1200</div>
+                        <div class="r-qty">Qty:1</div>
+                        <div class="r-total">Total : 1200</div>
+                        <div class="r-cancel">Cancel</div>
+                    </div>
+                </div>
+                <div class="delivered-items">
+                    <div class="d-items">
+                        <img src="./images/product-image/albums/bts/bts2.jpg">
+                        <div class="d-name">BTS- Map of the Soul Album</div>
+                        <div class="d-price">Total :₱2400</div>
+                        <div class="d-qty">Qty: 2</div>
+                        <div class="d-t-rate"><span>⋆</span><span>⋆</span><span>⋆</span><span>⋆</span><span>⋆</span></div>
+                        <div class="d-rate">Rate</div>
+                    </div>
+                    <div class="d-items">
+                        <img src="./images/product-image/albums/twice/twice1.jpg">
+                        <div class="d-name">Twice- Eyes Wide Open</div>
+                        <div class="d-price">Total :₱1200</div>
+                        <div class="d-qty">Qty: 1</div>
+                        <div class="d-t-rate"><span>⋆</span><span>⋆</span><span>⋆</span><span>⋆</span><span>⋆</span></div>
+                        <div class="d-rate">Rate</div>
+                    </div>
+                    <div class="d-items">
+                        <img src="./images/product-image/albums/bp/bp1.jpg">
+                        <div class="d-name">Black Pink - The Album</div>
+                        <div class="d-price">Total :₱1399</div>
+                        <div class="d-qty">Qty: 1</div>
+                        <div class="d-t-rate"><span>⋆</span><span>⋆</span><span>⋆</span><span>⋆</span><span>⋆</span></div>
+                        <div class="d-rate">Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
