@@ -37,4 +37,5 @@ class ProfileForm(forms.ModelForm):
         fields = (
             'address',
             'phone',
+			'name',
         )

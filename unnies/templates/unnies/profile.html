@@ -61,30 +61,30 @@
             <div class="profile-container">
                 <div class="infos">
                     <label class="info-label"> Username:</label>
-                    <input type="text" value="username" name="username">
+                    <input type="text" value="{{ profile.user }}" name="username" style="pointer-events:none;">
                 </div>
                 <div class="infos">
                     <label class="info-label"> Password: </label>
-                    <input type="password" value="dave" name="password">
+                    <input type="password" value="dave" name="password" style="pointer-events:none;">
                 </div>
                 <div class="infos">
                     <label class="info-label">Full Name:</label>
-                    <input type="text" value="Dave Charm Barboco Bulaquena" name="name">
+                    <input type="text" value="{{ profile.name }}" name="name">
                 </div>
                 <div class="infos">
                     <label class="info-label"> Phone Number:</label>
-                    <input type="text" value="09267138677" name="phone">
+                    <input type="text" value="{{ profile.phone }}" name="phone">
                 </div>
                 <div class="infos">
                     <label class="info-label"> Email:</label>
-                    <input type="email" value="davecharm16@gmail.com" name="email">
+                    <input type="email" value="{{ profile.user.email }}" name="email">
                 </div>
                 <div class="infos">
                     <label class="info-label"> Address:</label>
-                    <input type="text" value="#452 Talospatang, Malasiqui, Pangasinan" name="address">
+                    <input type="text" value="{{ profile.address }}" name="address">
                 </div>
                 <div class="save">
-                    <div class="save-but">Save</div>
+                    <div class="save-but">Edit</div>
                     <div class="signout-but">Sign out</div>
                 </div>
             </div>

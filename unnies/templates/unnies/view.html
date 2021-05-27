@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="gallery-container descriptions">
-        <div class="item-title">
+        <div class="item-title" data-id="{{ product.id }}">
             {{product.title}}
         </div>
         <div class="item-status">
@@ -56,7 +56,7 @@
             <div class="q-text">Quantity</div>
             <div class="q-button">
                 <button class="op minus">-</button>
-                <div class="quantity">1</div>
+                <div class="quantity" name="quantity">1</div>
                 <button class="op plus">+</button>
             </div>
             <div class="stocks">
@@ -64,20 +64,24 @@
             </div>
         </div>
         {% if product.stocks == 0 %}
-            <div class="out-of-stock">
-                Out of Stock!
-            </div>
-            {% else %}
-            <div class="add-cart">
-                Add to Cart
-            </div>
+        <div class="out-of-stock">
+            Out of Stock!
+        </div>
+        {% else %}
+        <div class="add-cart">
+            Add to Cart
+        </div>
         {% endif %}
-        
+
         <div class="product-description">
             <b>Product Description: </b>
             <br> &nbsp;&nbsp;&nbsp;&nbsp;{{ product.description }}
         </div>
     </div>
+    <form class="add-form" method="POST" action"">
+        {% csrf_token %}
+    </form>
 </div>
+<script src="{% static 'resources/jquery-3.5.1.min.js' %}"></script>
 <script src="{% static 'js/view_product.js' %}"></script>
 {% endblock content %}

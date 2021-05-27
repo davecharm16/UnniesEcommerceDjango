@@ -29,12 +29,16 @@
     </div>
     <div class="section-2">
         <div class="form-box">
-            <form action="" method = "POST" id="form">
+            <form action="" method="POST" id="form">
                 {% csrf_token %}
                 <h1 class="header1">Create Account</h1>
                 <div class="input-container">
                     <input type="text" name="username" placeholder="Username" required>
                     <h2 class="error error-username"></h2>
+                </div>
+                <div class="input-container">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <h2 class="error error-name"></h2>
                 </div>
                 <div class="input-container">
                     <input type="email" name="email" placeholder="Email" required>
@@ -64,9 +68,10 @@
         </div>
     </div>
     <script src="{% static 'resources/jquery-3.5.1.min.js' %} "></script>
-    <script src = "{% static 'js/register.js' %}"> </script>
+    <script src="{% static 'js/register.js' %}">
+    </script>
 </body>
-   
+
 </html>
 
 <!-- 

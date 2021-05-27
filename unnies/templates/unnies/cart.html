@@ -1,0 +1,215 @@
+{% extends 'unnies/base.html' %}
+{% load static %}
+{% block cart %}
+    <div class="cc-modal">
+        <div class="cc-form">
+            <div>Card Information Form</div>
+            <div class="cards-cc">
+                <span>Accepted Cards</span>
+                <img src="./images/cc-img/mastercard.png" alt="master">
+                <img src="./images/cc-img/visa.jpg" alt="visa">
+            </div>
+            <div class="n-card">
+                <label>Name on Card</label>
+                <input type="text" name="name-card" placeholder="Dave Charm Bulaquena">
+            </div>
+            <div class="n-card">
+                <label>Credit Card Number</label>
+                <input name="cc-number" type="text" maxlength="16" placeholder="1111 2222 3333 4444" />
+            </div>
+            <div class="n-card">
+                <label>Expiry Month</label>
+                <input type="text" name="cc-month" placeholder="September">
+            </div>
+            <div class="t-card">
+                <div class="t-c">
+                    <label>Expiry Year</label>
+                    <input type="text" name="cc-year" placeholder="2024" maxlength="4">
+                </div>
+                <div>
+                    <label>CCV</label>
+                    <input type="number" name="ccv" placeholder="324" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="3">
+                </div>
+            </div>
+            <div class="cards-cc">
+                <div class="cancel-cc">Cancel</div>
+                <div class="save-cc">Save</div>
+            </div>
+        </div>
+    </div>
+    <div class="check-out-modal">
+        <div class="check-out-form">
+            <div class="items-package">
+                <div class="item-head">
+                    <div class="total-items">Total Item/s : 1</div>
+                    <div class="order-d">OrderID: <span class="order-id"></span></div>
+                    <div class="p-method">
+                        Payment Method : Credit Card
+                    </div>
+                    <div class="op-card">
+                        <div class="v-card"><img> 1111-2222-2222-2222</div>
+                        <span class="change">change</span>
+                        <div class="modal-card">
+                            <div class="m-card"><img> 1111-2222-2222-2222</div>
+                            <div class="m-card"><img> 1111-2222-2222-2222</div>
+                            <div class="m-card"><img> 1111-2222-2222-2222</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="packages">
+                    <!-- <div class="package-item">
+                        <img src="./images/product-image/albums/bts/bts1.jpg">
+                        <div class="package-title">
+                            BTS- Dynamite- Album
+                        </div>
+                        <div class="package-price">
+                            Price : 1200
+                        </div>
+                        <div class="package-qty">
+                            Qty : 1
+                        </div>
+                        <div class="package-total">
+                            Total: 1200
+                        </div>
+                    </div>
+                    <div class="package-item">
+                        <img src="./images/product-image/albums/bts/bts1.jpg">
+                        <div class="package-title">
+                            BTS- Dynamite- Album
+                        </div>
+                        <div class="package-price">
+                            Price : 1200
+                        </div>
+                        <div class="package-qty">
+                            Qty : 1
+                        </div>
+                        <div class="package-total">
+                            Total: 1200
+                        </div>
+                    </div>
+                    <div class="package-item">
+                        <img src="./images/product-image/albums/bts/bts1.jpg">
+                        <div class="package-title">
+                            BTS- Dynamite- Album
+                        </div>
+                        <div class="package-price">
+                            Price : 1200
+                        </div>
+                        <div class="package-qty">
+                            Qty : 1
+                        </div>
+                        <div class="package-total">
+                            Total: 1200
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="package-info">
+                <div class="total-price-ship">
+                    <span class="t-price">Total Price : 4200</span>
+                    <span class="sf">plus shipping fee</span>
+                </div>
+                <div class="sf">
+                    Standard Shipping Fee : ₱100
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="c-info">
+                    <label>Recipient Name :</label>
+                    <input name="n" type="text" value="Dave Charm Bulaquena">
+                </div>
+                <div class="c-info">
+                    <label>Contact Number :</label>
+                    <input name="c" type="text" value="09267138677">
+                </div>
+                <div class="c-info">
+                    <label>Delivery Address : </label>
+                    <input name="a" type="text" value="#452 Talospatang, Malasiqui, Pangasinan">
+                </div>
+            </div>
+            <div class="check-buttons">
+                <div class="check-cancel">
+                    Cancel
+                </div>
+                <div class="check-confirm">
+                    Order
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-container">
+        <div class="cart-head">
+            <div class="cart-prod"> <input type="checkbox" name="select-all" id="select-all"> Product</div>
+            <div> Unit Price</div>
+            <div> Quantity</div>
+            <div> Total Price</div>
+            <div> Actions</div>
+        </div>
+        <div class="shopping-cart">
+        {% for product in cart_products %}
+             <form class="cart-item" action = "" method = "POST" data-cartId ="{{ product.id }}">
+                {% csrf_token %}
+                <div class="item-desc">
+                    <input type="checkbox" name="select" {% if product.selected %}checked{% endif %}>
+                    {% for images in product.product.imagemodelproduct_set.all %}
+                        {% if forloop.first %}
+                            <div class="item-pic"><img src="{{ images.image.url}}"></div>
+                        {% endif %}
+                    {% endfor %}
+                    <div class="cart-item-name">{{ product.product.title }}</div>
+                </div>
+                <div class="unit-price">₱{{ product.product.price }}</div>
+                <div class="unit-quantity">
+                    <div class="q-button">
+                        <button class="op minus-cart">-</button>
+                        <div class="quantity">{{ product.product_qty }}</div>
+                        <button class="op plus-cart">+</button>
+                    </div>
+                </div>
+                <div class="total-price">₱{{product.total_price}}</div>
+                <div class="remove">Delete</div>
+            </form>
+        {% endfor %}
+            <!-- <div class="cart-item">
+                <div class="item-desc">
+                    <input type="checkbox" name="select">
+                    <div class="item-pic"><img src="./images/product-image/albums/bts/bts1.jpg"></div>
+                    <div class="cart-item-name">BTS -Dynamite Album</div>
+                </div>
+                <div class="unit-price">₱1200</div>
+                <div class="unit-quantity">
+                    <div class="q-button">
+                        <button class="op minus-cart">-</button>
+                        <div class="quantity">0</div>
+                        <button class="op plus-cart">+</button>
+                    </div>
+                </div>
+                <div class="total-price">₱1200</div>
+                <div class="remove">Delete</div>
+            </div> -->
+        </div>
+    </div>
+    <div class="cart-foot">
+        <div class="pay-method">
+            <div>
+                Payment Method :
+            </div>
+            <div class="sel">
+                <span>▼</span>
+                <select>
+                    <option value="COD">COD</option>
+                    <option value="Credit Card">Credit Card</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            Merchandise Subtotal: <span class="sub-total">₱0</span>
+        </div>
+        <div class="checkout">Check Out</div>
+    </div>
+    <script src="{% static 'resources/jquery-3.5.1.min.js' %}"></script>
+    <script src=" {% static 'js/cart.js' %}"></script>
+
+   
+{% endblock cart %}

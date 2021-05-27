@@ -609,7 +609,7 @@ function updateView() {
 
     $('.add-cart').click(() => {
         alert('Item Added to Cart!');
-        addCart(item);
+        // addCart(item);
     });
 }
 
@@ -747,34 +747,34 @@ function getItemCart() {
             );
         }
     }
-    $('.plus-cart').click(function() {
-        item = cart[$(this).parent().parent().parent().index()]
-        item.qty += 1;
-        // $('.quantity').text(item.qty);
-        // $('.total-price').text(`₱${item.price*item.qty}`);
-        $('.cart-item').eq($(this).parent().parent().parent().index()).find('.quantity').text(item.qty);
-        $('.cart-item').eq($(this).parent().parent().parent().index()).find('.total-price').text(`₱${item.price*item.qty}`);
-        items = JSON.parse(localStorage.getItem('cart'));
-        items[$(this).parent().parent().parent().index()] = item;
-        localStorage.setItem('cart', JSON.stringify(items));
-        collectOrder();
-    });
-    $('.minus-cart').click(function() {
-        item = cart[$(this).parent().parent().parent().index()]
-        if (item.qty == 1) {
-            item.qty = 1;
-        } else {
-            item.qty -= 1;
-        }
-        // $('.quantity').text(item.qty);
-        // $('.total-price').text(`₱${item.price*item.qty}`);
-        $('.cart-item').eq($(this).parent().parent().parent().index()).find('.quantity').text(item.qty);
-        $('.cart-item').eq($(this).parent().parent().parent().index()).find('.total-price').text(`₱${item.price*item.qty}`);
-        items = JSON.parse(localStorage.getItem('cart'));
-        items[$(this).parent().parent().parent().index()] = item;
-        localStorage.setItem('cart', JSON.stringify(items));
-        collectOrder();
-    });
+    // $('.plus-cart').click(function() {
+    //     item = cart[$(this).parent().parent().parent().index()]
+    //     item.qty += 1;
+    //     // $('.quantity').text(item.qty);
+    //     // $('.total-price').text(`₱${item.price*item.qty}`);
+    //     $('.cart-item').eq($(this).parent().parent().parent().index()).find('.quantity').text(item.qty);
+    //     $('.cart-item').eq($(this).parent().parent().parent().index()).find('.total-price').text(`₱${item.price*item.qty}`);
+    //     items = JSON.parse(localStorage.getItem('cart'));
+    //     items[$(this).parent().parent().parent().index()] = item;
+    //     localStorage.setItem('cart', JSON.stringify(items));
+    //     collectOrder();
+    // });
+    // $('.minus-cart').click(function() {
+    //     item = cart[$(this).parent().parent().parent().index()]
+    //     if (item.qty == 1) {
+    //         item.qty = 1;
+    //     } else {
+    //         item.qty -= 1;
+    //     }
+    //     // $('.quantity').text(item.qty);
+    //     // $('.total-price').text(`₱${item.price*item.qty}`);
+    //     $('.cart-item').eq($(this).parent().parent().parent().index()).find('.quantity').text(item.qty);
+    //     $('.cart-item').eq($(this).parent().parent().parent().index()).find('.total-price').text(`₱${item.price*item.qty}`);
+    //     items = JSON.parse(localStorage.getItem('cart'));
+    //     items[$(this).parent().parent().parent().index()] = item;
+    //     localStorage.setItem('cart', JSON.stringify(items));
+    //     collectOrder();
+    // });
 
     $('input[name="select"').click(function() {
         collectOrder();

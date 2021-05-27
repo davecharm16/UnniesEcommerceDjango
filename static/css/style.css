@@ -2375,13 +2375,17 @@ input[name="p"] {
         flex-direction: column;
         justify-content: space-around;
         width: 300px;
-        height: 400px;
+        height: 300px;
     }
     .nav-burger li {
         text-align: center;
     }
     .nav-burger li {
         list-style: none;
+    }
+    .nav-burger li a,
+    .icon {
+        font-size: 1rem;
     }
     #burger-icon {
         font-size: 1.5rem;
@@ -2422,6 +2426,24 @@ input[name="p"] {
     .infos>input {
         font-size: 0.8rem;
     }
+    .d-items>div {
+        font-size: 0.8rem;
+    }
+    .profile-body {
+        padding-right: 0.2rem;
+        padding-left: 0.2rem;
+    }
+    .avatar-border {
+        width: 50px;
+        height: 50px;
+    }
+    .to-recieve,
+    .delivered-items {
+        border: none;
+    }
+    .d-t-rate span {
+        font-size: 1rem;
+    }
     .pop-up-nav-mobile {
         z-index: 100;
         position: fixed;
@@ -2450,6 +2472,7 @@ input[name="p"] {
     }
     .nav-burger {
         width: 150px;
+        height: 280px
     }
     .side-box {
         min-height: 450px;

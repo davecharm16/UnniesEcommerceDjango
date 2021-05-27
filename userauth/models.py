@@ -8,6 +8,7 @@ class Profile(models.Model):
     user = models.OneToOneField(Account, on_delete=models.CASCADE)
     address = models.CharField(blank = False, max_length = 250)
     phone = models.DecimalField(max_digits=13, decimal_places=0, blank = False,)
+    name = models.CharField(blank = False, max_length=150, default="Name")
 
 
     def __str__(self):
